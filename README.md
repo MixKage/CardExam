@@ -4,3 +4,5 @@
  Приложение синхронизируется с Google Docs и конвертирует в удобный список.
 # Share
  Приложение имеет возможность делиться списками с другими пользователями приложения.
+
+ flutter pub run build_runner build --delete-conflicting-outputs
