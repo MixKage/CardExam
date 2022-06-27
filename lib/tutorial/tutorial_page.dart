@@ -29,9 +29,10 @@ class TutorialPage extends StatelessWidget {
           },
           showBackButton: false,
           showSkipButton: true,
-          showNextButton: false,
+          showNextButton: true,
           skip: const Text("Skip"),
           done: const Text("Done"),
+          next: const Text("Text"),
         ),
       ),
     );
