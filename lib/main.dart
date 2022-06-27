@@ -65,13 +65,15 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextFormField(
-                    decoration: InputDecoration(hintText: "Login"),
+                    decoration: InputDecoration(
+                        hintText: "Login@gmail.com", labelText: "Login"),
                     validator: (value) {
                       if (value == null) return "";
                       return value.contains('@') ? null : "Введите почту!";
                     }),
                 const TextField(
-                    decoration: InputDecoration(hintText: "Password"),
+                    decoration: InputDecoration(
+                        hintText: "*****", labelText: "Password"),
                     obscureText: true),
                 SizedBox(height: 10),
                 Row(
