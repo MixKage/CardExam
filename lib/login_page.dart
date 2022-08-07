@@ -13,8 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(context) => SafeArea(
         child: Scaffold(body: LayoutBuilder(builder: (context, constraints) {
-          return AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
+          return Container(
               color: Colors.lightGreen[200],
               padding: constraints.maxWidth < _minWidht
                   ? EdgeInsets.zero
@@ -27,11 +26,12 @@ class _LoginPageState extends State<LoginPage> {
                     maxWidth: 600,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.background,
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         FittedBox(
                           fit: BoxFit.fitWidth,
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: Colors.grey[100],
+                              color: Theme.of(context).colorScheme.onSecondary,
                               borderRadius: BorderRadius.circular(10)),
                           child: const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: Colors.grey[100],
+                              color: Theme.of(context).colorScheme.onSecondary,
                               borderRadius: BorderRadius.circular(10)),
                           child: const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -82,19 +82,15 @@ class _LoginPageState extends State<LoginPage> {
                             minHeight:
                                 constraints.maxWidth < _minWidht ? 50 : 50,
                           ),
-                          child: Expanded(
-                            child: RaisedButton(
-                                color: Colors.blue,
-                                child: Text("Log in",
-                                    style:
-                                        const TextStyle(color: Colors.white)),
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomePage()));
-                                }),
-                          ),
+                          child: ElevatedButton(
+                              child: const Text("Log in",
+                                  style: TextStyle(color: Colors.white)),
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage()));
+                              }),
                         )
                       ]),
                 ),
