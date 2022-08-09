@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cardexam/main_page';
+import 'package:cardexam/main_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
