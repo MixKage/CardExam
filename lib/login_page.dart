@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cardexam/main_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage2 extends StatefulWidget {
+  const LoginPage2({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginPage2> createState() => _LoginPage2State();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPage2State extends State<LoginPage2> {
   final int _minWidht = 600;
   @override
   Widget build(context) => SafeArea(
