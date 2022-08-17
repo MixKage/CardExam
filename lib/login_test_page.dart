@@ -11,6 +11,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final widhtScreen = MediaQuery.of(context).size.width;
+    var usernameController = TextEditingController();
+    var passwordController = TextEditingController();
 
     return Scaffold(
       body: widhtScreen > 650
@@ -30,15 +32,17 @@ class LoginPage extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 3,
-                  child: loginContainer(context),
+                  child: loginContainer(
+                      context, usernameController, passwordController),
                 ),
               ],
             )
-          : loginContainer(context),
+          : loginContainer(context, usernameController, passwordController),
     );
   }
 
-  Widget loginContainer(BuildContext context) {
+  Widget loginContainer(
+      BuildContext context, usernameController, passwordController) {
     return Container(
       constraints: const BoxConstraints(
         maxWidth: 650,
@@ -68,7 +72,9 @@ class LoginPage extends StatelessWidget {
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextField(
+                  controller: usernameController,
                   decoration: InputDecoration(
+                    icon: Icon(Icons.person_sharp),
                     labelText: "username",
                     border: InputBorder.none,
                   ),
@@ -83,7 +89,10 @@ class LoginPage extends StatelessWidget {
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextField(
+                  obscureText: true,
+                  controller: passwordController,
                   decoration: InputDecoration(
+                    icon: Icon(Icons.password),
                     labelText: "password",
                     border: InputBorder.none,
                   ),
@@ -102,7 +111,7 @@ class LoginPage extends StatelessWidget {
                     )),
                 ElevatedButton(
                   onPressed: () {},
-                  child: const Text('LogIn'),
+                  child: const Text('вход'),
                 ),
               ],
             ),
