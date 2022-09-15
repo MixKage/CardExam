@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 Future<String> fetchAlbum() async {
   final response =
-      await http.get(Uri.parse('http://192.168.1.225:5293/WeatherForecast'));
+      await http.get(Uri.parse('http://192.168.1.143:5293/WeatherForecast'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
