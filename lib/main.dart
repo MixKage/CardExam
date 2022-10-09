@@ -58,11 +58,22 @@ class _MyHomePageState extends State<MyHomePage> {
   List files = List.empty(growable: true);
   List<int> _selectedFiles = List.empty(growable: true);
 
-  Future<void> _openFolderPicker(TextEditingController textController) async {
+  Future<void> _openFolderPicker() async {
     files = List.empty(growable: true);
     _selectedDirectory = await FilePicker.platform.getDirectoryPath();
     if (_selectedDirectory != null) {
       //files = io.Directory("$_selectedDirectory/").listSync();
+      await _setFilesFromFolder();
+    }
+    setState(() {
+      _enableButton = true;
+    });
+  }
+
+  Future<void> _setFilesFromFolder() async {
+    if (_selectedDirectory != null) {
+      files = List.empty(growable: true);
+      _selectedFiles = List.empty(growable: true);
       var tmp = io.Directory("$_selectedDirectory/").listSync();
       List<String> extensions = textController.text.split(',');
       if (extensions.isNotEmpty && extensions[0] != "") {
@@ -83,10 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
       for (var i = 0; i < files.length; i++) {
         _selectedFiles.add(i);
       }
+      setState(() {});
     }
-    setState(() {
-      _enableButton = true;
-    });
   }
 
   Future<void> _deleteSelectedFiles() async {
@@ -107,6 +116,14 @@ class _MyHomePageState extends State<MyHomePage> {
     // Clean up the controller when the widget is disposed.
     textController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Start listening to changes.
+    textController.addListener(_setFilesFromFolder);
   }
 
   @override
@@ -205,7 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ? null
                         : () async {
                             setState(() => _enableButton = false);
-                            _openFolderPicker(textController);
+                            _openFolderPicker();
                           },
                     child: const Text("Select folder")),
                 const SizedBox(width: 10),
