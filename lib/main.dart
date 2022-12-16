@@ -7,11 +7,12 @@ import 'package:http/http.dart' as http;
 Future<String> fetchAlbum() async {
   final response =
       await http.get(Uri.parse('http://192.168.1.143:5293/WeatherForecast'));
-
+  if (response != null) {
+    debugPrint("AllWork");
+  }
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-
     return response.body.toString();
   } else {
     // If the server did not return a 200 OK response,
@@ -86,11 +87,13 @@ class _MyAppState extends State<MyApp> {
                 return const CircularProgressIndicator();
               },
             ),
-            RaisedButton(onPressed: () {
-              setState(() {
-                text = fetchAlbum();
-              });
-            }),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    text = fetchAlbum();
+                  });
+                },
+                child: const Text("Button")),
           ],
         ),
       ),
