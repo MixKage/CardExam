@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Valerij\\source\\repos\\CardExam\\BackendApi\\BackendApi.csproj": {}
+    "E:\\Programms\\CardExam\\BackendApi\\BackendApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Valerij\\source\\repos\\CardExam\\BackendApi\\BackendApi.csproj": {
+    "E:\\Programms\\CardExam\\BackendApi\\BackendApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Valerij\\source\\repos\\CardExam\\BackendApi\\BackendApi.csproj",
+        "projectUniqueName": "E:\\Programms\\CardExam\\BackendApi\\BackendApi.csproj",
         "projectName": "BackendApi",
-        "projectPath": "C:\\Users\\Valerij\\source\\repos\\CardExam\\BackendApi\\BackendApi.csproj",
-        "packagesPath": "C:\\Users\\Valerij\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Valerij\\source\\repos\\CardExam\\BackendApi\\obj\\",
+        "projectPath": "E:\\Programms\\CardExam\\BackendApi\\BackendApi.csproj",
+        "packagesPath": "C:\\Users\\Medved\\.nuget\\packages\\",
+        "outputPath": "E:\\Programms\\CardExam\\BackendApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Valerij\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Medved\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,13 +40,27 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.3.0, )"
             }
           },
           "imports": [
@@ -59,8 +69,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -72,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
