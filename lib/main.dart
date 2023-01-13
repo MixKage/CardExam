@@ -1,112 +1,66 @@
-import 'dart:convert';
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'pages/pages.dart';
+import 'utilities/constants.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class TestValue{
-  String text = "XD";
-}
-
-Future<void> fetchAlbum() async {
-
-  var jsonMap = {
-    'text': 'olololo2'
-  };
-
-  String jsonStr = jsonEncode(jsonMap);
-  print(jsonStr);
-  print(jsonMap);
-  print("++++++++");
-  http.post(Uri.parse('http://192.168.1.143:5293/WeatherForecast'), body: jsonStr, headers: { "Content-Type" : "application/json"}).then((result) {
-    print(result.statusCode);
-    print(result.body);
-  });
-
-  //final response = await http.put(Uri.parse('http://192.168.1.143:5293/WeatherForecast'), body: new TestValue());
-  // if (response != null) {
-  //   debugPrint("AllWork");
-  // }
-  // if (response.statusCode == 200) {
-  //   // If the server did return a 200 OK response,
-  //   // then parse the JSON.
-  //   return response.body.toString();
-  // } else {
-  //   // If the server did not return a 200 OK response,
-  //   // then throw an exception.
-  //   throw Exception('Failed to load album');
-  // }
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  Future<void> _incrementCounter() async {
-    await fetchAlbum();
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: accentTextColor,
+          background: backgroundColor,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // initialRoute: '/',
+      initialRoute: '/',
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (BuildContext context) => LoginPage(),
+        '/signup': (BuildContext context) => SignUpPage(),
+        '/test': (BuildContext context) => TestPage()
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == "/login") {
+          return PageRouteBuilder(
+            settings:
+                settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+            pageBuilder: (_, __, ___) => const SecondLoginPage(),
+            //transitionDuration: const Duration(milliseconds: 800),
+            transitionsBuilder: (_, a, __, c) =>
+                FadeTransition(opacity: a, child: c),
+          );
+        }
+        // Unknown route
+        return MaterialPageRoute(builder: (_) => const UnknownPage());
+      },
     );
+    /*return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ProductDataProvider>(
+          create: (context) => ProductDataProvider(),
+        ),
+        ChangeNotifierProvider<CartDataProvider>(
+          create: (context) => CartDataProvider(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Demo App',
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+          backgroundColor: Colors.white,
+          textTheme: GoogleFonts.marmeladTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
+        home: HomePage(),
+      ),
+    );*/
   }
 }

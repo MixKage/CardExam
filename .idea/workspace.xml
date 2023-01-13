@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="" />
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: SignIn Page">
+      <change afterPath="$PROJECT_DIR$/lib/assets/fonts/OpenSans.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/old_main.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/pages.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/test_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/unknown_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/utilities/constants.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/utilities/theme.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cardexam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cardexam.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2J0moolzj6m5Q4CCDiRMNXpqN0Z" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" />
     <panes>
@@ -18,16 +49,50 @@
       </pane>
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "dart.settings"
+    "settings.editor.selected.configurable": "dart.settings",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/assets/fonts" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="" />
+      <created>1671223555730</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671223555730</updated>
+      <workItem from="1671223558168" duration="38000" />
+      <workItem from="1671307164178" duration="972000" />
+      <workItem from="1671396819410" duration="797000" />
+      <workItem from="1673210905563" duration="113000" />
+      <workItem from="1673470869066" duration="1358000" />
+      <workItem from="1673518621631" duration="5460000" />
+      <workItem from="1673524141538" duration="14534000" />
+      <workItem from="1673549792872" duration="9101000" />
+      <workItem from="1673586575337" duration="12876000" />
+      <workItem from="1673642983355" duration="8331000" />
+    </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -35,6 +100,13 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add: SignIn Page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: SignIn Page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
