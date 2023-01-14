@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../utilities/check_connection.dart';
 import '../widgets/login_page_widgets.dart';
 
 class LoginPage extends StatelessWidget {
@@ -43,8 +44,19 @@ class LoginPage extends StatelessWidget {
                     Hero(
                       tag: 'login_button',
                       child: BuildLoginBtn(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/login');
+                          onPressed: () async {
+                            if (await hasNetwork()) {
+                              Navigator.pushNamed(context, '/login');
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Отсутсвует интернет подключение, войдите в режим гостя',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
+                              );
+                            }
                           },
                           buttonText: 'LOGIN'),
                     ),
@@ -69,9 +81,19 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    BuildSignUpBtn(onPressed: () {
-                      Navigator.pushNamed(context, '/signup');
-                      //Navigator.pushNamed(context, '/test');
+                    BuildSignUpBtn(onPressed: () async {
+                      if (await hasNetwork()) {
+                        Navigator.pushNamed(context, '/signup');
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Отсутсвует интернет подключение, войдите в режим гостя',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        );
+                      }
                     }),
                   ],
                 ),
@@ -184,8 +206,19 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                       const SizedBox(
                         height: 70,
                       ),
-                      BuildSignUpBtn(onPressed: () {
-                        Navigator.pushNamed(context, '/signup');
+                      BuildSignUpBtn(onPressed: () async {
+                        if (await hasNetwork()) {
+                          Navigator.pushNamed(context, '/signup');
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Отсутсвует интернет подключение, войдите в режим гостя',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          );
+                        }
                       }),
                     ],
                   ),

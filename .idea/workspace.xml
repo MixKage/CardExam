@@ -9,15 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: color button">
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: function =&gt; Widget add more const">
+      <change afterPath="$PROJECT_DIR$/lib/utilities/check_connection.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/test_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/test_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/unknown_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/unknown_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utilities/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +75,7 @@
       <workItem from="1673524141538" duration="14534000" />
       <workItem from="1673549792872" duration="9101000" />
       <workItem from="1673586575337" duration="12876000" />
-      <workItem from="1673642983355" duration="12689000" />
+      <workItem from="1673642983355" duration="14689000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -110,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673655334511</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix: function =&gt; Widget add more const">
+      <created>1673656604113</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673656604113</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -127,7 +129,8 @@
     <MESSAGE value="fix: LoginPage -&gt; Stateless" />
     <MESSAGE value="add: Animation for signip page" />
     <MESSAGE value="fix: color button" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: color button" />
+    <MESSAGE value="fix: function =&gt; Widget add more const" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: function =&gt; Widget add more const" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
