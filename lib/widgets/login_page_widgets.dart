@@ -46,14 +46,13 @@ Widget buildLoginBtn(
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         elevation: 3.0,
-        backgroundColor: const Color(0xffffffff),
-        foregroundColor: const Color(0xffffffff),
+        backgroundColor: const Color(0xfff1f1f1),
         padding: const EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
       ),
-      onPressed: () => onPressed(),
+      onPressed: () => {onPressed(), debugPrint('Pressed button')},
       child: Text(
         buttonText,
         style: const TextStyle(
@@ -75,8 +74,8 @@ Widget questionSignUp({required BuildContext context}) {
           context: context,
           builder: (context) {
             return ListView(
-              children: [
-                const SizedBox(height: 15),
+              children: const [
+                SizedBox(height: 15),
                 ListTile(
                   title: Text('Почему моего учебного заведения нет в списке?'),
                   subtitle: Text(
@@ -107,7 +106,7 @@ Widget questionSignUp({required BuildContext context}) {
           },
         );
       },
-      icon: Icon(Icons.question_mark));
+      icon: const Icon(Icons.question_mark));
 }
 
 TextStyle textLogoStyle({required double fontSize}) {
