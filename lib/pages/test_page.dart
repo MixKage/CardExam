@@ -22,7 +22,7 @@ class _TestPageState extends State<TestPage> {
       body: Center(
         child: Column(
           children: [
-            TextField(style: TextStyle()),
+            const TextField(style: TextStyle()),
             CustomDropdownButton2(
               buttonWidth: 250,
               hint: 'Выберите учебное заведение',

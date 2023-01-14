@@ -45,7 +45,7 @@ class UnknownPage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.all(40.0),
-                child: buildLoginBtn(onPressed: () {}, buttonText: 'Home Page'),
+                child: BuildLoginBtn(onPressed: () {}, buttonText: 'Home Page'),
               )),
         ],
       ),

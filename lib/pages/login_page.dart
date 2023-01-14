@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import '../widgets/login_page_widgets.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,7 @@ class LoginPage extends StatelessWidget {
                     const Spacer(),
                     Hero(
                       tag: 'login_button',
-                      child: buildLoginBtn(
+                      child: BuildLoginBtn(
                           onPressed: () {
                             Navigator.pushNamed(context, '/login');
                           },
@@ -67,7 +69,7 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    buildSignupBtn(onPressed: () {
+                    BuildSignUpBtn(onPressed: () {
                       Navigator.pushNamed(context, '/signup');
                       //Navigator.pushNamed(context, '/test');
                     }),
@@ -176,13 +178,13 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                       ),
                       Hero(
                           tag: 'login_button',
-                          child: buildLoginBtn(
+                          child: BuildLoginBtn(
                               onPressed: () => print('SIGNIN'),
                               buttonText: 'Sign In')),
                       const SizedBox(
                         height: 70,
                       ),
-                      buildSignupBtn(onPressed: () {
+                      BuildSignUpBtn(onPressed: () {
                         Navigator.pushNamed(context, '/signup');
                       }),
                     ],

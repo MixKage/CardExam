@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import '../widgets/login_page_widgets.dart';
 
 class SignUpPage extends StatefulWidget {
-  SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -60,16 +60,20 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'SignUp',
                         textAlign: TextAlign.center,
-                        style: textLogoStyle(fontSize: 40.0),
+                        style: TextStyle(
+                          color: Color(0xff1e1f1e),
+                          fontSize: 40.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(
                         height: 100,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10.0),
                         child: TextField(
                           keyboardType: TextInputType.emailAddress,
@@ -81,8 +85,8 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10.0),
                         child: TextField(
                             obscureText: true,
@@ -123,7 +127,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Hero(
                           tag: 'login_button',
-                          child: buildLoginBtn(
+                          child: BuildLoginBtn(
                               onPressed: () {}, buttonText: 'Create Account')),
                       const SizedBox(
                         height: 70,
@@ -140,8 +144,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.arrow_back_ios_sharp)),
-                    questionSignUp(context: context)
+                        icon: const Icon(Icons.arrow_back_ios_sharp)),
+                    QuestionSignUp(context: context)
                   ],
                 ),
               )

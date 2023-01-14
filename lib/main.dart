@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (BuildContext context) => LoginPage(),
-        '/test': (BuildContext context) => TestPage()
+        '/': (BuildContext context) => const LoginPage(),
+        '/test': (BuildContext context) => const TestPage()
       },
       onGenerateRoute: (settings) {
         switch (settings.name) {
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             return PageRouteBuilder(
               settings:
                   settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
-              pageBuilder: (_, __, ___) => SignUpPage(),
+              pageBuilder: (_, __, ___) => const SignUpPage(),
               //transitionDuration: const Duration(milliseconds: 800),
               transitionsBuilder: (_, a, __, c) =>
                   FadeTransition(opacity: a, child: c),

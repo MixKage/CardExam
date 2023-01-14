@@ -9,10 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: SignIn Page">
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: color button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/test_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/test_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/unknown_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/unknown_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utilities/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +48,6 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,7 +80,7 @@
       <workItem from="1673524141538" duration="14534000" />
       <workItem from="1673549792872" duration="9101000" />
       <workItem from="1673586575337" duration="12876000" />
-      <workItem from="1673642983355" duration="11103000" />
+      <workItem from="1673642983355" duration="12689000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -86,7 +89,28 @@
       <option name="project" value="LOCAL" />
       <updated>1673652226674</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix: LoginPage -&gt; Stateless">
+      <created>1673655275365</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673655275365</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add: Animation for signip page">
+      <created>1673655302650</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673655302650</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix: color button">
+      <created>1673655334511</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673655334511</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -100,7 +124,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add: SignIn Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: SignIn Page" />
+    <MESSAGE value="fix: LoginPage -&gt; Stateless" />
+    <MESSAGE value="add: Animation for signip page" />
+    <MESSAGE value="fix: color button" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: color button" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
