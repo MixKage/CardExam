@@ -23,20 +23,30 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (BuildContext context) => LoginPage(),
-        '/signup': (BuildContext context) => SignUpPage(),
         '/test': (BuildContext context) => TestPage()
       },
       onGenerateRoute: (settings) {
-        if (settings.name == "/login") {
-          return PageRouteBuilder(
-            settings:
-                settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
-            pageBuilder: (_, __, ___) => const SecondLoginPage(),
-            //transitionDuration: const Duration(milliseconds: 800),
-            transitionsBuilder: (_, a, __, c) =>
-                FadeTransition(opacity: a, child: c),
-          );
+        switch (settings.name) {
+          case "/login":
+            return PageRouteBuilder(
+              settings:
+                  settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+              pageBuilder: (_, __, ___) => const SecondLoginPage(),
+              //transitionDuration: const Duration(milliseconds: 800),
+              transitionsBuilder: (_, a, __, c) =>
+                  FadeTransition(opacity: a, child: c),
+            );
+          case "/signup":
+            return PageRouteBuilder(
+              settings:
+                  settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+              pageBuilder: (_, __, ___) => SignUpPage(),
+              //transitionDuration: const Duration(milliseconds: 800),
+              transitionsBuilder: (_, a, __, c) =>
+                  FadeTransition(opacity: a, child: c),
+            );
         }
+
         // Unknown route
         return MaterialPageRoute(builder: (_) => const UnknownPage());
       },
