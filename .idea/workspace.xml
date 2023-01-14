@@ -10,24 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: SignIn Page">
-      <change afterPath="$PROJECT_DIR$/lib/assets/fonts/OpenSans.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/old_main.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/pages.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/test_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/unknown_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utilities/constants.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utilities/theme.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cardexam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cardexam.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,8 +77,16 @@
       <workItem from="1673524141538" duration="14534000" />
       <workItem from="1673549792872" duration="9101000" />
       <workItem from="1673586575337" duration="12876000" />
-      <workItem from="1673642983355" duration="8331000" />
+      <workItem from="1673642983355" duration="11103000" />
     </task>
+    <task id="LOCAL-00001" summary="add: SignIn Page">
+      <created>1673652226674</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673652226674</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">

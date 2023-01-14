@@ -2,186 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../widgets/login_page_widgets.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginPage> {
-  // bool _rememberMe = false;
-
-  /*Widget _buildEmailTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Email',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.email,
-                color: Colors.white,
-              ),
-              hintText: 'Enter your Email',
-              hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),
-      ],
-    );
-  }*/
-
-  /*Widget _buildPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            obscureText: true,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock,
-                color: Colors.white,
-              ),
-              hintText: 'Enter your Password',
-              hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),
-      ],
-    );
-  }*/
-
-  /*Widget _buildForgotPasswordBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-        onPressed: () => print('Forgot Password Button Pressed'),
-        child: Text(
-          'Forgot Password?',
-          style: kLabelStyle,
-        ),
-      ),
-    );
-  }*/
-
-  /*Widget _buildRememberMeCheckbox() {
-    return Container(
-      height: 20.0,
-      child: Row(
-        children: <Widget>[
-          Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
-            child: Checkbox(
-              value: _rememberMe,
-              checkColor: Colors.green,
-              activeColor: Colors.white,
-              onChanged: (value) {
-                setState(() {
-                  _rememberMe = value!;
-                });
-              },
-            ),
-          ),
-          Text(
-            'Remember me',
-            style: kLabelStyle,
-          ),
-        ],
-      ),
-    );
-  }*/
-
-  /* Widget _buildSocialBtn(
-      {required Function() onTap, required AssetImage logo}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
-            ),
-          ],
-          image: DecorationImage(
-            image: logo,
-          ),
-        ),
-      ),
-    );
-  }*/
-
-  /*Widget _buildSocialBtnRow() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 30.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _buildSocialBtn(
-            onTap: () => print('Login with Facebook'),
-            logo: AssetImage(
-              'assets/logos/facebook.jpg',
-            ),
-          ),
-          _buildSocialBtn(
-            onTap: () => print('Login with Google'),
-            logo: AssetImage(
-              'assets/logos/google.jpg',
-            ),
-          ),
-        ],
-      ),
-    );
-  }*/
-
-  late TextEditingController _loginController;
-
-  @override
-  void initState() {
-    super.initState();
-    _loginController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _loginController.dispose();
-    super.dispose();
-  }
-
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -261,8 +82,30 @@ class _LoginScreenState extends State<LoginPage> {
   }
 }
 
-class SecondLoginPage extends StatelessWidget {
+class SecondLoginPage extends StatefulWidget {
   const SecondLoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<SecondLoginPage> createState() => _SecondLoginPageState();
+}
+
+class _SecondLoginPageState extends State<SecondLoginPage> {
+  late TextEditingController _loginController;
+  late TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _loginController = TextEditingController();
+    _passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _loginController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -311,18 +154,22 @@ class SecondLoginPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: TextField(
+                          controller: _loginController,
                           textInputAction: TextInputAction.next,
                           keyboardType: TextInputType.name,
                           autofocus: true,
-                          decoration: InputDecoration(labelText: 'Login'),
+                          decoration: const InputDecoration(labelText: 'Login'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: TextField(
+                            controller: _passwordController,
                             textInputAction: TextInputAction.done,
                             obscureText: true,
-                            decoration: InputDecoration(labelText: 'Password')),
+                            onSubmitted: (value) => print('SIGNIN'),
+                            decoration:
+                                const InputDecoration(labelText: 'Password')),
                       ),
                       const SizedBox(
                         height: 50,
@@ -330,7 +177,8 @@ class SecondLoginPage extends StatelessWidget {
                       Hero(
                           tag: 'login_button',
                           child: buildLoginBtn(
-                              onPressed: () {}, buttonText: 'Sign In')),
+                              onPressed: () => print('SIGNIN'),
+                              buttonText: 'Sign In')),
                       const SizedBox(
                         height: 70,
                       ),
@@ -347,7 +195,7 @@ class SecondLoginPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_back_ios_sharp)),
+                    icon: const Icon(Icons.arrow_back_ios_sharp)),
               ),
               //_buildSignupBtn(),
             ],
