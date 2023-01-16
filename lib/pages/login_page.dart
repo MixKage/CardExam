@@ -1,3 +1,4 @@
+import 'package:cardexam/utilities/login_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utilities/check_connection.dart';
@@ -9,6 +10,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
         child: Stack(
@@ -35,10 +37,13 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 40),
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                       'Card\nExam',
                       textAlign: TextAlign.center,
-                      style: textLogoStyle(fontSize: 80.0),
+                      style: TextStyle(
+                          fontSize: 80.0,
+                          color: Color(0xFF282828),
+                          fontWeight: FontWeight.bold),
                     ),
                     const Spacer(),
                     Hero(
@@ -49,20 +54,20 @@ class LoginPage extends StatelessWidget {
                               Navigator.pushNamed(context, '/login');
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text(
-                                    'Отсутсвует интернет подключение, войдите в режим гостя',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                ),
-                              );
+                                  MySnackBar(
+                                      iconSnack: const Icon(
+                                        Icons.wifi_off_outlined,
+                                        color: Colors.white60,
+                                      ),
+                                      text:
+                                          "Отсутсвует интернет подключение, войдите в режим гостя"));
                             }
                           },
-                          buttonText: 'LOGIN'),
+                          buttonText: 'Войти'),
                     ),
                     const SizedBox(height: 20.0),
                     const Text(
-                      '- OR -',
+                      '- ИЛИ -',
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.w400,
@@ -71,7 +76,7 @@ class LoginPage extends StatelessWidget {
                     TextButton(
                       onPressed: () {},
                       child: const Text(
-                        'Сontinue as guest',
+                        'Продолжить как гость',
                         style: TextStyle(
                           fontSize: 14,
                           fontFamily: 'OpenSans',
@@ -81,20 +86,22 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    BuildSignUpBtn(onPressed: () async {
-                      if (await hasNetwork()) {
-                        Navigator.pushNamed(context, '/signup');
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'Отсутсвует интернет подключение, войдите в режим гостя',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        );
-                      }
-                    }),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 40.0),
+                      child: BuildSignUpBtn(onPressed: () async {
+                        if (await hasNetwork()) {
+                          Navigator.pushNamed(context, '/signup');
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(MySnackBar(
+                              iconSnack: const Icon(
+                                Icons.wifi_off_outlined,
+                                color: Colors.white60,
+                              ),
+                              text:
+                                  "Отсутсвует интернет подключение, войдите в режим гостя"));
+                        }
+                      }),
+                    ),
                   ],
                 ),
               ),
@@ -106,6 +113,8 @@ class LoginPage extends StatelessWidget {
   }
 }
 
+final _formKey = GlobalKey<FormState>();
+
 class SecondLoginPage extends StatefulWidget {
   const SecondLoginPage({Key? key}) : super(key: key);
 
@@ -116,10 +125,12 @@ class SecondLoginPage extends StatefulWidget {
 class _SecondLoginPageState extends State<SecondLoginPage> {
   late TextEditingController _loginController;
   late TextEditingController _passwordController;
+  late bool _passwordVisible = false;
 
   @override
   void initState() {
     super.initState();
+    _passwordVisible = false;
     _loginController = TextEditingController();
     _passwordController = TextEditingController();
   }
@@ -134,6 +145,7 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
         child: GestureDetector(
@@ -164,64 +176,118 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                     left: 10.0,
                     top: 60,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Card\nExam',
-                        textAlign: TextAlign.center,
-                        style: textLogoStyle(fontSize: 40.0),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: TextField(
-                          controller: _loginController,
-                          textInputAction: TextInputAction.next,
-                          keyboardType: TextInputType.name,
-                          autofocus: true,
-                          decoration: const InputDecoration(labelText: 'Login'),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Card\nExam',
+                          textAlign: TextAlign.center,
+                          style: textLogoStyle(fontSize: 40.0),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: TextField(
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: TextFormField(
+                            controller: _loginController,
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.emailAddress,
+                            autofocus: true,
+                            decoration:
+                                const InputDecoration(labelText: 'Email'),
+                            validator: (value) => validEmail(value!),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: TextFormField(
                             controller: _passwordController,
                             textInputAction: TextInputAction.done,
-                            obscureText: true,
-                            onSubmitted: (value) => print('SIGNIN'),
-                            decoration:
-                                const InputDecoration(labelText: 'Password')),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Hero(
-                          tag: 'login_button',
-                          child: BuildLoginBtn(
-                              onPressed: () => print('SIGNIN'),
-                              buttonText: 'Sign In')),
-                      const SizedBox(
-                        height: 70,
-                      ),
-                      BuildSignUpBtn(onPressed: () async {
-                        if (await hasNetwork()) {
-                          Navigator.pushNamed(context, '/signup');
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Отсутсвует интернет подключение, войдите в режим гостя',
-                                style: TextStyle(fontSize: 16),
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText: !_passwordVisible,
+                            // onFieldSubmitted: (value) => print('SIGNIN'),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(RegExp(
+                                  "[a-zA-Z0-9 ! \" # \$ % & ' ( ) * + , \\ -. / : ; < = > ? @ ^ _ ` { | }]"))
+                            ],
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Пустое поле';
+                              }
+                              return null;
+                            },
+
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _passwordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors
+                                      .black54 /*Theme.of(context).primaryColorDark*/,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _passwordVisible = !_passwordVisible;
+                                  });
+                                },
                               ),
                             ),
-                          );
-                        }
-                      }),
-                    ],
+                          ),
+                          // TODO: хочется преврать это в отдельный виджет
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Hero(
+                            tag: 'login_button',
+                            child: BuildLoginBtn(
+                                onPressed: () => {
+                                      if (_formKey.currentState!.validate())
+                                        {print('SIGNIN')}
+                                    },
+                                buttonText: 'Войти')),
+                        TextButton(
+                            onPressed: () {},
+                            child: const Text('Забыли пароль?')),
+                        const SizedBox(
+                          height: 70,
+                        ),
+                      ],
+                    ),
                   ),
+                ),
+              ),
+              SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 40.0),
+                  child: BuildSignUpBtn(onPressed: () async {
+                    if (await hasNetwork()) {
+                      Navigator.pushNamed(context, '/signup');
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(MySnackBar(
+                              iconSnack: const Icon(
+                                Icons.wifi_off_outlined,
+                                color: Colors.white60,
+                              ),
+                              text:
+                                  "Отсутсвует интернет подключение, войдите в режим гостя")
+                          /*const SnackBar(
+                          content: ContentSnackBar(
+                              iconSnack: Icon(
+                                Icons.wifi_off_outlined,
+                                color: Colors.black45,
+                              ),
+                              text:
+                                  "Отсутсвует интернет подключение, войдите в режим гостя"),
+                        ),*/
+                          );
+                    }
+                  }),
                 ),
               ),
               SafeArea(

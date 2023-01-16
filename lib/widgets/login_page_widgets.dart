@@ -10,31 +10,28 @@ class BuildSignUpBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: Container(
-        padding: const EdgeInsets.only(bottom: 50),
-        child: GestureDetector(
-          onTap: () => onPressed(),
-          child: RichText(
-            text: const TextSpan(
-              children: [
-                TextSpan(
-                  text: 'Don\'t have an Account? ',
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w400,
-                  ),
+      child: GestureDetector(
+        onTap: () => onPressed(),
+        child: RichText(
+          text: const TextSpan(
+            children: [
+              TextSpan(
+                text: 'Нет аккаунта? ',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w400,
                 ),
-                TextSpan(
-                  text: 'Sign Up',
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+              TextSpan(
+                text: 'Создай его',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -81,6 +78,69 @@ class BuildLoginBtn extends StatelessWidget {
   }
 }
 
+/*class PasswordTextFormField extends StatefulWidget {
+  final TextEditingController passwordController;
+  final bool passwordVisible;
+  const PasswordTextFormField(
+      {Key? key,
+      required this.passwordController,
+      required this.passwordVisible})
+      : super(key: key);
+
+  @override
+  State<PasswordTextFormField> createState() => _PasswordTextFormFieldState(
+      passwordController: passwordController, passwordVisible: passwordVisible);
+}
+
+class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
+  final TextEditingController passwordController;
+  late final bool passwordVisible;
+  const _PasswordTextFormFieldState(
+      {Key? key,
+      required this.passwordController,
+      required this.passwordVisible});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: passwordController,
+      textInputAction: TextInputAction.done,
+      keyboardType: TextInputType.visiblePassword,
+      obscureText: !passwordVisible,
+      // onFieldSubmitted: (value) => print('SIGNIN'),
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(
+            "[a-zA-Z0-9 ! \" # \$ % & ' ( ) * + , \\ -. / : ; < = > ? @ ^ _ ` { | }]"))
+      ],
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Пустое поле';
+        } else if (validEnglish(value)) {
+          return 'Пароль должен быть на английском';
+        }
+        return null;
+      },
+
+      decoration: InputDecoration(
+        labelText: 'Password',
+        suffixIcon: IconButton(
+          icon: Icon(
+            // Based on passwordVisible state choose the icon
+            passwordVisible ? Icons.visibility : Icons.visibility_off,
+            color: Theme.of(context).primaryColorDark,
+          ),
+          onPressed: () {
+            // Update the state i.e. toogle the state of passwordVisible variable
+            setState(() {
+              passwordVisible = !passwordVisible;
+            });
+          },
+        ),
+      ),
+    );
+  }
+}*/
+
 class QuestionSignUp extends StatelessWidget {
   final BuildContext context;
   const QuestionSignUp({Key? key, required this.context}) : super(key: key);
@@ -99,27 +159,27 @@ class QuestionSignUp extends StatelessWidget {
                     title:
                         Text('Почему моего учебного заведения нет в списке?'),
                     subtitle: Text(
-                        'Если вашего учебного заведения нет в списке, напишите нам на почту CardExam.yandex.ru'),
+                        'Если вашего учебного заведения нет в списке, заполните гугл форму'),
                   ),
                   ListTile(
                     title: Text('Что даёт регистрация?'),
                     subtitle: Text(
-                        'Если вашего учебного заведения нет в списке, напишите нам на почту CardExam.yandex.ru'),
+                        'Регистрация открывает доступ ко всем возможностям CardExam'),
                   ),
                   ListTile(
-                    title: Text('Вопрос 3'),
+                    title: Text('Для чего указывать почту?'),
                     subtitle: Text(
-                        'Если вашего учебного заведения нет в списке, напишите нам на почту CardExam.yandex.ru'),
+                        'Для получения уведомлений и восстановления пароля'),
                   ),
                   ListTile(
-                    title: Text('Вопрос 4'),
+                    title: Text('Что такое CardExam?'),
                     subtitle: Text(
-                        'Если вашего учебного заведения нет в списке, напишите нам на почту CardExam.yandex.ru'),
+                        'Приложение позволяющее готовиться к любому материалу в той или иной форме'),
                   ),
                   ListTile(
-                    title: Text('Вопрос 5'),
+                    title: Text('Могу ли я добавить карточку с эказменом?'),
                     subtitle: Text(
-                        'Если вашего учебного заведения нет в списке, напишите нам на почту CardExam.yandex.ru'),
+                        'Конечно, но для этого необходимо зарегестрироваться. Гостевой режим позволяет только смотреть и запускать карточки'),
                   ),
                 ],
               );
@@ -128,6 +188,55 @@ class QuestionSignUp extends StatelessWidget {
         },
         icon: const Icon(Icons.question_mark));
   }
+}
+
+class ContentSnackBar extends StatelessWidget {
+  final Icon iconSnack;
+  final String text;
+  const ContentSnackBar({
+    Key? key,
+    required this.iconSnack,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SnackBar(
+      content: Row(
+        children: <Widget>[
+          // add your preferred icon here
+          iconSnack,
+          const SizedBox(width: 15.0),
+          // add your preferred text content here
+          Flexible(
+            child: Text(
+              text,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+SnackBar MySnackBar({required Icon iconSnack, required String text}) {
+  return SnackBar(
+    content: Row(
+      children: <Widget>[
+        // add your preferred icon here
+        iconSnack,
+        const SizedBox(width: 15.0),
+        // add your preferred text content here
+        Flexible(
+          child: Text(
+            text,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 TextStyle textLogoStyle({required double fontSize}) {
