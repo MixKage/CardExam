@@ -8,26 +8,23 @@ class UnknownPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          const SafeArea(
-              child: Align(
-            alignment: AlignmentDirectional.topCenter,
-            child: Padding(
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            const Padding(
               padding: EdgeInsets.all(20.0),
               child: Text(
-                'Card\nExam',
+                'Card Exam',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 52,
                   fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
             ),
-          )),
-          Align(
-            alignment: Alignment.center,
-            child: Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Icon(Icons.question_mark, size: 42),
@@ -40,14 +37,12 @@ class UnknownPage extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: BuildLoginBtn(onPressed: () {}, buttonText: 'Home Page'),
-              )),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: BuildLoginBtn(onPressed: () {}, buttonText: 'Home Page'),
+            ),
+          ],
+        ),
       ),
     );
   }

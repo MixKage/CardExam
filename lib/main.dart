@@ -1,76 +1,39 @@
+import 'package:cardexam/navigation/navigation_service.dart';
+import 'package:cardexam/utilities/theme.dart';
 import 'package:flutter/material.dart';
-import 'pages/pages.dart';
-import 'utilities/constants.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: accentTextColor,
-          background: backgroundColor,
-        ),
-      ),
-      // initialRoute: '/',
-      initialRoute: '/',
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/': (BuildContext context) => const LoginPage(),
-        '/test': (BuildContext context) => const TestPage()
-      },
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case "/login":
-            return PageRouteBuilder(
-              settings:
-                  settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
-              pageBuilder: (_, __, ___) => const SecondLoginPage(),
-              //transitionDuration: const Duration(milliseconds: 800),
-              transitionsBuilder: (_, a, __, c) =>
-                  FadeTransition(opacity: a, child: c),
-            );
-          case "/signup":
-            return PageRouteBuilder(
-              settings:
-                  settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
-              pageBuilder: (_, __, ___) => const SignUpPage(),
-              //transitionDuration: const Duration(milliseconds: 800),
-              transitionsBuilder: (_, a, __, c) =>
-                  FadeTransition(opacity: a, child: c),
-            );
-        }
+  State<MyApp> createState() => _MyAppState();
+}
 
-        // Unknown route
-        return MaterialPageRoute(builder: (_) => const UnknownPage());
-      },
-    );
-    /*return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<ProductDataProvider>(
-          create: (context) => ProductDataProvider(),
-        ),
-        ChangeNotifierProvider<CartDataProvider>(
-          create: (context) => CartDataProvider(),
-        )
-      ],
-      child: MaterialApp(
-        title: 'Demo App',
-        theme: ThemeData(
-          primarySwatch: Colors.amber,
-          backgroundColor: Colors.white,
-          textTheme: GoogleFonts.marmeladTextTheme(
-            Theme.of(context).textTheme,
-          ),
-        ),
-        home: HomePage(),
-      ),
-    );*/
+class _MyAppState extends State<MyApp> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
+  final NavigationService navigationService = NavigationService();
+
+  @override
+  void initState() {
+    navigationService.init(_navigatorKey);
+    super.initState();
   }
+
+  @override
+  Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.dark,
+        child: MaterialApp(
+          navigatorKey: _navigatorKey,
+          theme: basicTheme(),
+          initialRoute: navigationService.initialRoute,
+          debugShowCheckedModeBanner: false,
+          routes: navigationService.routes,
+          onGenerateRoute: navigationService.onGenerateRoute,
+        ),
+      );
 }

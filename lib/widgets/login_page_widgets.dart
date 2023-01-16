@@ -148,79 +148,49 @@ class QuestionSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return ListView(
-                children: const [
-                  SizedBox(height: 15),
-                  ListTile(
-                    title:
-                        Text('Почему моего учебного заведения нет в списке?'),
-                    subtitle: Text(
-                        'Если вашего учебного заведения нет в списке, заполните гугл форму'),
-                  ),
-                  ListTile(
-                    title: Text('Что даёт регистрация?'),
-                    subtitle: Text(
-                        'Регистрация открывает доступ ко всем возможностям CardExam'),
-                  ),
-                  ListTile(
-                    title: Text('Для чего указывать почту?'),
-                    subtitle: Text(
-                        'Для получения уведомлений и восстановления пароля'),
-                  ),
-                  ListTile(
-                    title: Text('Что такое CardExam?'),
-                    subtitle: Text(
-                        'Приложение позволяющее готовиться к любому материалу в той или иной форме'),
-                  ),
-                  ListTile(
-                    title: Text('Могу ли я добавить карточку с эказменом?'),
-                    subtitle: Text(
-                        'Конечно, но для этого необходимо зарегестрироваться. Гостевой режим позволяет только смотреть и запускать карточки'),
-                  ),
-                ],
-              );
-            },
-          );
-        },
-        icon: const Icon(Icons.question_mark));
-  }
-}
-
-class ContentSnackBar extends StatelessWidget {
-  final Icon iconSnack;
-  final String text;
-  const ContentSnackBar({
-    Key? key,
-    required this.iconSnack,
-    required this.text,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SnackBar(
-      content: Row(
-        children: <Widget>[
-          // add your preferred icon here
-          iconSnack,
-          const SizedBox(width: 15.0),
-          // add your preferred text content here
-          Flexible(
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 16),
-            ),
-          ),
-        ],
-      ),
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return ListView(
+              children: const [
+                SizedBox(height: 15),
+                ListTile(
+                  title: Text('Почему моего учебного заведения нет в списке?'),
+                  subtitle: Text(
+                      'Если вашего учебного заведения нет в списке, заполните гугл форму'),
+                ),
+                ListTile(
+                  title: Text('Что даёт регистрация?'),
+                  subtitle: Text(
+                      'Регистрация открывает доступ ко всем возможностям CardExam'),
+                ),
+                ListTile(
+                  title: Text('Для чего указывать почту?'),
+                  subtitle:
+                      Text('Для получения уведомлений и восстановления пароля'),
+                ),
+                ListTile(
+                  title: Text('Что такое CardExam?'),
+                  subtitle: Text(
+                      'Приложение позволяющее готовиться к любому материалу в той или иной форме'),
+                ),
+                ListTile(
+                  title: Text('Могу ли я добавить карточку с эказменом?'),
+                  subtitle: Text(
+                      'Конечно, но для этого необходимо зарегестрироваться. Гостевой режим позволяет только смотреть и запускать карточки'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      icon: const Icon(Icons.question_mark),
     );
   }
 }
 
-SnackBar MySnackBar({required Icon iconSnack, required String text}) {
+SnackBar mySnackBar({required Icon iconSnack, required String text}) {
   return SnackBar(
     content: Row(
       children: <Widget>[
