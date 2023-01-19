@@ -1,14 +1,21 @@
-import 'package:cardexam/utilities/constants.dart';
-import 'package:flutter/material.dart';
+// import 'package:cardexam/theme/theme_constants.dart';
+// import 'package:flutter/material.dart';
 
+/*
 ThemeData basicTheme() => ThemeData.from(
       colorScheme: ColorScheme.fromSeed(
         seedColor: const Color(0xFF527DAA),
         background: backgroundColor,
-        brightness: Brightness.dark,
       ),
     ).copyWith(
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
+      primaryTextTheme: const TextTheme(
+        headline6: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+          fontSize: 14.0,
+        ),
+      ),
       textTheme: const TextTheme(
         headline1: TextStyle(
           fontSize: 80.0,
@@ -21,3 +28,4 @@ ThemeData basicTheme() => ThemeData.from(
         displayColor: Colors.black,
       ),
     );
+*/

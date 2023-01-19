@@ -9,8 +9,8 @@ String? validEmail(String value) {
   if (value.isEmpty) {
     return 'Пустое поле';
   } else if (!RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-      .hasMatch(value)) {
+    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+  ).hasMatch(value)) {
     return 'Введите Email';
   }
   return null;

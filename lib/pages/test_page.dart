@@ -2,7 +2,7 @@ import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class TestPage extends StatefulWidget {
-  const TestPage({Key? key}) : super(key: key);
+  const TestPage({super.key});
 
   @override
   State<TestPage> createState() => _TestPageState();
@@ -17,26 +17,24 @@ class _TestPageState extends State<TestPage> {
   String? selectedValue;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const TextField(style: TextStyle()),
-            CustomDropdownButton2(
-              buttonWidth: 250,
-              hint: 'Выберите учебное заведение',
-              dropdownItems: items,
-              value: selectedValue,
-              onChanged: (value) {
-                setState(() {
-                  selectedValue = value;
-                });
-              },
-            ),
-          ],
+  Widget build(BuildContext context) => Scaffold(
+        body: Center(
+          child: Column(
+            children: [
+              const TextField(style: TextStyle()),
+              CustomDropdownButton2(
+                buttonWidth: 250,
+                hint: 'Выберите учебное заведение',
+                dropdownItems: items,
+                value: selectedValue,
+                onChanged: (value) {
+                  setState(() {
+                    selectedValue = value;
+                  });
+                },
+              ),
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

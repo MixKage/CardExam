@@ -3,6 +3,19 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+/*DecoratedBox(
+decoration: const BoxDecoration(
+gradient: LinearGradient(
+begin: Alignment.topCenter,
+end: Alignment.bottomCenter,
+colors: [
+Color(0xfff3f3f3),
+Color(0xffe3e3e3),
+],
+stops: [0.1, 0.9],
+),
+),*/
+
 void main() {
   runApp(const MyApp());
 }
@@ -20,19 +33,19 @@ Future<void> fetchAlbum() async {
     'direction': 'string',
     'grade': 0
   };
-  print(jsonMap2);
+  debugPrint(jsonMap2.toString());
 
   final String jsonStr = jsonEncode(jsonMap);
-  print(jsonStr);
-  print(jsonMap);
-  print('++++++++');
+  debugPrint(jsonStr);
+  debugPrint(jsonMap.toString());
+  debugPrint('++++++++');
   final response = await Dio()
       .post('http://192.168.1.143:7210/WeatherForecast')
       .then((result) {
-    print(result.statusCode);
-    print(result.data);
+    debugPrint(result.statusCode.toString());
+    debugPrint(result.data);
   });
-  print(response);
+  debugPrint(response);
 
   //final response = await http.put(Uri.parse('http://192.168.1.143:5293/WeatherForecast'), body: new TestValue());
   // if (response != null) {
@@ -64,7 +77,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({required this.title, super.key});
 
   final String title;
   @override

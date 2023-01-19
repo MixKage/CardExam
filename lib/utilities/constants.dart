@@ -22,6 +22,3 @@ final kBoxDecorationStyle = BoxDecoration(
     ),
   ],
 );
-
-const Color accentTextColor = Color(0xFF527DAA);
-const Color backgroundColor = Color(0xffe3e3e3);

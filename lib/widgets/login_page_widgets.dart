@@ -1,81 +1,67 @@
+import 'package:cardexam/theme/theme_constants.dart';
 import 'package:flutter/material.dart';
-
-import '../utilities/constants.dart';
 
 class BuildSignUpBtn extends StatelessWidget {
   final Function() onPressed;
-  const BuildSignUpBtn({Key? key, required this.onPressed}) : super(key: key);
+  const BuildSignUpBtn({required this.onPressed, super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: GestureDetector(
-        onTap: () => onPressed(),
-        child: RichText(
-          text: const TextSpan(
-            children: [
-              TextSpan(
-                text: 'Нет аккаунта? ',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
+  Widget build(BuildContext context) => Align(
+        alignment: Alignment.bottomCenter,
+        child: GestureDetector(
+          onTap: onPressed,
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Нет аккаунта? ',
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontSize: 18.0,
+                      ),
                 ),
-              ),
-              TextSpan(
-                text: 'Создай его',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
+                TextSpan(
+                  text: 'Создай его',
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class BuildLoginBtn extends StatelessWidget {
   final Function() onPressed;
   final String buttonText;
-  const BuildLoginBtn(
-      {Key? key, required this.onPressed, required this.buttonText})
-      : super(key: key);
+  const BuildLoginBtn({
+    required this.onPressed,
+    required this.buttonText,
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 25.0,
-      ),
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          elevation: 3.0,
-          backgroundColor: const Color(0xfff1f1f1),
-          padding: const EdgeInsets.all(15.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 25.0,
+        ),
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: () => {onPressed(), debugPrint('Pressed button')},
+          child: Text(
+            buttonText,
+            style: const TextStyle(
+              color: accentTextColorLight,
+              letterSpacing: 1.5,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              //fontFamily: 'OpenSans',
+            ),
           ),
         ),
-        onPressed: () => {onPressed(), debugPrint('Pressed button')},
-        child: Text(
-          buttonText,
-          style: const TextStyle(
-            color: accentTextColor,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
+      );
 }
 
 /*class PasswordTextFormField extends StatefulWidget {
@@ -143,76 +129,86 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
 
 class QuestionSignUp extends StatelessWidget {
   final BuildContext context;
-  const QuestionSignUp({Key? key, required this.context}) : super(key: key);
+  const QuestionSignUp({required this.context, super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        showModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return ListView(
-              children: const [
-                SizedBox(height: 15),
-                ListTile(
+  Widget build(BuildContext context) => IconButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => ListView(
+              children: [
+                const SizedBox(height: 15),
+                const ListTile(
                   title: Text('Почему моего учебного заведения нет в списке?'),
-                  subtitle: Text(
-                      'Если вашего учебного заведения нет в списке, заполните гугл форму'),
+                  subtitle: Text('Если вашего учебного заведения нет в списке, '
+                      'заполните гугл форму'),
                 ),
-                ListTile(
+                const ListTile(
                   title: Text('Что даёт регистрация?'),
-                  subtitle: Text(
-                      'Регистрация открывает доступ ко всем возможностям CardExam'),
+                  subtitle: Text('Регистрация открывает доступ ко '
+                      'всем возможностям CardExam'),
                 ),
-                ListTile(
+                const ListTile(
                   title: Text('Для чего указывать почту?'),
                   subtitle:
                       Text('Для получения уведомлений и восстановления пароля'),
                 ),
-                ListTile(
+                const ListTile(
                   title: Text('Что такое CardExam?'),
-                  subtitle: Text(
-                      'Приложение позволяющее готовиться к любому материалу в той или иной форме'),
+                  subtitle: Text('Приложение позволяющее готовиться к любому '
+                      'материалу в той или иной форме'),
                 ),
-                ListTile(
+                const ListTile(
                   title: Text('Могу ли я добавить карточку с эказменом?'),
                   subtitle: Text(
-                      'Конечно, но для этого необходимо зарегестрироваться. Гостевой режим позволяет только смотреть и запускать карточки'),
+                      'Конечно, но для этого необходимо зарегестрироваться. '
+                      'Гостевой режим позволяет только '
+                      'смотреть и запускать карточки'),
                 ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Добавить свой ВУЗ'),
+                  ),
+                )
               ],
-            );
-          },
-        );
-      },
-      icon: const Icon(Icons.question_mark),
-    );
-  }
-}
-
-SnackBar mySnackBar({required Icon iconSnack, required String text}) {
-  return SnackBar(
-    content: Row(
-      children: <Widget>[
-        // add your preferred icon here
-        iconSnack,
-        const SizedBox(width: 15.0),
-        // add your preferred text content here
-        Flexible(
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 16),
-          ),
+            ),
+          );
+        },
+        icon: Icon(
+          Icons.question_mark,
+          color: Theme.of(context).colorScheme.onPrimary,
         ),
-      ],
-    ),
-  );
+      );
 }
 
-TextStyle textLogoStyle({required double fontSize}) {
-  return TextStyle(
-    color: const Color(0xff1e1f1e),
-    fontSize: fontSize,
-    fontWeight: FontWeight.bold,
-  );
-}
+SnackBar mySnackBar({required Icon iconSnack, required String text}) =>
+    SnackBar(
+      backgroundColor: backgroundColorDarkDown,
+      content: Row(
+        children: <Widget>[
+          // add your preferred icon here
+          iconSnack,
+          const SizedBox(width: 15.0),
+          // add your preferred text content here
+          Flexible(
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
+TextStyle textLogoStyle({required double fontSize}) => TextStyle(
+      color: const Color(0xff1e1f1e),
+      fontSize: fontSize,
+      fontWeight: FontWeight.bold,
+    );
