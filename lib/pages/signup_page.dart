@@ -238,7 +238,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       isExpanded: true,
                       hint: const Text(
                         'Выберите учебное заведение',
-                        style: TextStyle(fontSize: 14),
                       ),
                       icon: const Icon(
                         Icons.arrow_drop_down,
@@ -248,7 +247,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       buttonDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      buttonPadding: const EdgeInsets.only(left: 20, right: 10),
+                      buttonPadding: const EdgeInsets.only(right: 10),
                       dropdownDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -297,7 +296,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       isExpanded: true,
                       hint: const Text(
                         'Выберите свой курс',
-                        style: TextStyle(fontSize: 14),
                       ),
                       icon: const Icon(
                         Icons.arrow_drop_down,
@@ -307,7 +305,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       buttonDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      buttonPadding: const EdgeInsets.only(left: 20, right: 10),
+                      buttonPadding: const EdgeInsets.only(right: 10),
                       dropdownDecoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                       ),
