@@ -68,7 +68,6 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                     key: _formKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(20.0),

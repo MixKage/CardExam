@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: Padding combobox">
-      <change afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: new file for SignIn">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/signin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +85,7 @@
       <workItem from="1674032923935" duration="10926000" />
       <workItem from="1674078750104" duration="2243000" />
       <workItem from="1674120266000" duration="15663000" />
-      <workItem from="1674148238861" duration="499000" />
+      <workItem from="1674148238861" duration="1444000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -151,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674148627954</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add: new file for SignIn">
+      <created>1674148825579</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674148825579</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -173,7 +179,8 @@
     <MESSAGE value="add: validate" />
     <MESSAGE value="add: DarkTheme" />
     <MESSAGE value="fix: Padding combobox" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Padding combobox" />
+    <MESSAGE value="add: new file for SignIn" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: new file for SignIn" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
