@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: DarkTheme">
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: Padding combobox">
+      <change afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,6 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TODO_SCOPE": "All Places",
     "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
     "last.edited.regexp": "",
     "node.js.detected.package.eslint": "true",
@@ -85,7 +86,7 @@
       <workItem from="1674032923935" duration="10926000" />
       <workItem from="1674078750104" duration="2243000" />
       <workItem from="1674120266000" duration="15663000" />
-      <workItem from="1674148238861" duration="318000" />
+      <workItem from="1674148238861" duration="499000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -143,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674144300417</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix: Padding combobox">
+      <created>1674148627954</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674148627954</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -164,7 +172,8 @@
     <MESSAGE value="add: check internet connection" />
     <MESSAGE value="add: validate" />
     <MESSAGE value="add: DarkTheme" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: DarkTheme" />
+    <MESSAGE value="fix: Padding combobox" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Padding combobox" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
