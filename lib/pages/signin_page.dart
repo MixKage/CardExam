@@ -17,20 +17,21 @@ class SecondLoginPage extends StatefulWidget {
 class _SecondLoginPageState extends State<SecondLoginPage> {
   late TextEditingController _loginController;
   late TextEditingController _passwordController;
-  late bool _passwordVisible = false;
+  late ValueNotifier<bool> _isPasswordVisibleNotifier;
 
   @override
   void initState() {
     super.initState();
-    _passwordVisible = false;
     _loginController = TextEditingController();
     _passwordController = TextEditingController();
+    _isPasswordVisibleNotifier = ValueNotifier(true);
   }
 
   @override
   void dispose() {
     _loginController.dispose();
     _passwordController.dispose();
+    _isPasswordVisibleNotifier.dispose();
     super.dispose();
   }
 
@@ -82,44 +83,51 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: TextFormField(
-                            controller: _passwordController,
-                            textInputAction: TextInputAction.done,
-                            keyboardType: TextInputType.visiblePassword,
-                            obscureText: !_passwordVisible,
-                            // onFieldSubmitted: (value) => print('SIGNIN'),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                RegExp(
-                                  "[a-zA-Z0-9 ! \" # \$ % & ' ( ) * + , \\ -. / : ; < = > ? @ ^ _ ` { | }]",
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0,
+                            vertical: 14.0,
+                          ),
+                          child: ValueListenableBuilder<bool>(
+                            valueListenable: _isPasswordVisibleNotifier,
+                            builder: (context, isPasswordVisible, child) =>
+                                TextFormField(
+                              controller: _passwordController,
+                              textInputAction: TextInputAction.done,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: isPasswordVisible,
+                              // onFieldSubmitted: (value) => print('SIGNIN'),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                  RegExp(
+                                    "[a-zA-Z0-9 ! \" # \$ % & ' ( ) * + , \\ -. / : ; < = > ? @ ^ _ ` { | }]",
+                                  ),
+                                )
+                              ],
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Пустое поле';
+                                } else if (value.length < 8) {
+                                  return 'Пароль должен содержать '
+                                      'минимум 8 символов';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'Пароль',
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _isPasswordVisibleNotifier.value
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    _isPasswordVisibleNotifier.value =
+                                        !_isPasswordVisibleNotifier.value;
+                                  },
                                 ),
-                              )
-                            ],
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Пустое поле';
-                              }
-                              return null;
-                            },
-
-                            decoration: InputDecoration(
-                              labelText: 'Пароль',
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _passwordVisible
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _passwordVisible = !_passwordVisible;
-                                  });
-                                },
                               ),
                             ),
                           ),
-                          // TODO: хочется преврать это в отдельный виджет
                         ),
                         const SizedBox(
                           height: 50,
@@ -135,7 +143,10 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            NavigationService.instance
+                                .pushNamed(NavigationPaths.unknown);
+                          },
                           child: const Text('Забыли пароль?'),
                         ),
                         const SizedBox(

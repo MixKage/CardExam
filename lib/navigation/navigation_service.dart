@@ -6,11 +6,11 @@ import 'package:cardexam/pages/unknown_page.dart';
 import 'package:flutter/material.dart';
 
 enum NavigationPaths {
-  home('/'),
+  start('/'),
   test('/test'),
   login('/login'),
   signUp('/sign_up'),
-  ;
+  unknown('/unknown');
 
   const NavigationPaths(this.path);
   final String path;
