@@ -9,11 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: normal toggle for change theme">
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: rebuild Page not Found">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/signin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/unknown_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/unknown_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/theme/theme_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/theme_constants.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +46,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TODO_SCOPE": "All Places",
     "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
     "last.edited.regexp": "",
     "node.js.detected.package.eslint": "true",
@@ -86,7 +88,8 @@
       <workItem from="1674032923935" duration="10926000" />
       <workItem from="1674078750104" duration="2243000" />
       <workItem from="1674120266000" duration="15663000" />
-      <workItem from="1674148238861" duration="3069000" />
+      <workItem from="1674148238861" duration="3130000" />
+      <workItem from="1674249436525" duration="604000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -165,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674149787191</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fix: rebuild Page not Found">
+      <created>1674151362682</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1674151362682</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -189,7 +199,8 @@
     <MESSAGE value="fix: Padding combobox" />
     <MESSAGE value="add: new file for SignIn" />
     <MESSAGE value="add: normal toggle for change theme" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: normal toggle for change theme" />
+    <MESSAGE value="fix: rebuild Page not Found" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: rebuild Page not Found" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

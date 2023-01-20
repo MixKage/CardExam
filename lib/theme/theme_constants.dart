@@ -15,6 +15,11 @@ ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: accentTextColorLight,
   backgroundColor: backgroundColorLight,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: backgroundColorLightUp,
+    centerTitle: true,
+  ),
+  scaffoldBackgroundColor: backgroundColorLight,
   colorScheme: ColorScheme.fromSwatch().copyWith(
     primary: accentTextColorLight,
     secondary: backgroundColorLightUp,
@@ -74,6 +79,11 @@ ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   //primaryColor: accentTextColorDark,
   backgroundColor: backgroundColorDark,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: backgroundColorDarkUp,
+    centerTitle: true,
+  ),
+  scaffoldBackgroundColor: backgroundColorDark,
   colorScheme: ColorScheme.fromSwatch().copyWith(
     brightness: Brightness.dark,
     secondary: backgroundColorDarkUp,

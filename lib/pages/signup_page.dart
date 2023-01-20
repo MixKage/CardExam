@@ -54,11 +54,9 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           leading: BackButton(color: Theme.of(context).colorScheme.onPrimary),
-          backgroundColor: Theme.of(context).colorScheme.secondary,
           actions: [QuestionSignUp(context: context)],
           title: Text(
-            'SignUn',
-            textAlign: TextAlign.center,
+            'SignUp',
             style: TextStyle(
               fontSize: 40.0,
               fontWeight: FontWeight.bold,
@@ -66,7 +64,6 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
         ),
-        backgroundColor: Theme.of(context).backgroundColor,
         body: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Form(
@@ -165,6 +162,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               _isPasswordVisibleNotifier.value =
                                   !_isPasswordVisibleNotifier.value;
                             },
+                            splashRadius: 2,
                           ),
                         ),
                       ),
@@ -213,6 +211,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               _isPasswordVisibleNotifier.value =
                                   !_isPasswordVisibleNotifier.value;
                             },
+                            splashRadius: 2,
                           ),
                         ),
                       ),

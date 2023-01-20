@@ -39,10 +39,8 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           leading: BackButton(color: Theme.of(context).colorScheme.onPrimary),
-          backgroundColor: Theme.of(context).colorScheme.secondary,
           title: Text(
             'SignIn',
-            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 40.0,
               fontWeight: FontWeight.bold,
@@ -50,7 +48,6 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
             ),
           ),
         ),
-        backgroundColor: Theme.of(context).backgroundColor,
         resizeToAvoidBottomInset: false,
         body: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -124,6 +121,7 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                                     _isPasswordVisibleNotifier.value =
                                         !_isPasswordVisibleNotifier.value;
                                   },
+                                  splashRadius: 2,
                                 ),
                               ),
                             ),
