@@ -1,7 +1,7 @@
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/theme/theme_manager.dart';
 import 'package:cardexam/utilities/check_connection.dart';
-import 'package:cardexam/widgets/login_page_widgets.dart';
+import 'package:cardexam/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:cardexam/utilities/check_connection.dart';
 import 'package:cardexam/utilities/login_function.dart';
-import 'package:cardexam/widgets/login_page_widgets.dart';
+import 'package:cardexam/widgets/widgets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,7 +54,53 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           leading: BackButton(color: Theme.of(context).colorScheme.onPrimary),
-          actions: [QuestionSignUp(context: context)],
+          actions: [
+            MyModalBottomSheet(
+              context: context,
+              listWidget: [
+                const MyListTile(
+                  title: 'Почему моего учебного заведения нет в списке?',
+                  subtitle: 'Если вашего учебного заведения нет в списке, '
+                      'заполните гугл форму',
+                ),
+                const MyListTile(
+                  title: 'Что даёт регистрация?',
+                  subtitle: 'Регистрация открывает доступ ко '
+                      'всем возможностям CardExam',
+                ),
+                const MyListTile(
+                  title: 'Для чего указывать почту?',
+                  subtitle: 'Для получения уведомлений и восстановления пароля',
+                ),
+                const MyListTile(
+                  title: 'Что такое CardExam?',
+                  subtitle: 'Приложение позволяющее готовиться к любому '
+                      'материалу в той или иной форме',
+                ),
+                const MyListTile(
+                  title: 'Могу ли я добавить карточку с эказменом?',
+                  subtitle:
+                      'Конечно, но для этого необходимо зарегестрироваться. '
+                      'Гостевой режим позволяет только '
+                      'смотреть и запускать карточки',
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15.0,
+                    vertical: 15,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Добавить свой ВУЗ'),
+                  ),
+                ),
+              ],
+              icon: Icon(
+                Icons.question_mark,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            )
+          ],
           title: Text(
             'SignUp',
             style: TextStyle(
@@ -224,15 +270,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     child: DropdownButtonFormField2(
                       decoration: InputDecoration(
-                        //Add isDense true and zero Padding.
-                        //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
                         isDense: true,
                         contentPadding: EdgeInsets.zero,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        //Add more decoration as you want here
-                        //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
                       ),
                       isExpanded: true,
                       hint: const Text(
@@ -282,15 +324,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     child: DropdownButtonFormField2(
                       decoration: InputDecoration(
-                        //Add isDense true and zero Padding.
-                        //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
                         isDense: true,
                         contentPadding: EdgeInsets.zero,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        //Add more decoration as you want here
-                        //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
                       ),
                       isExpanded: true,
                       hint: const Text(

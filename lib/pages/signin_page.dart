@@ -1,10 +1,9 @@
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/utilities/check_connection.dart';
 import 'package:cardexam/utilities/login_function.dart';
-import 'package:cardexam/widgets/login_page_widgets.dart';
+import 'package:cardexam/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 final _formKey = GlobalKey<FormState>();
 
 class SecondLoginPage extends StatefulWidget {
