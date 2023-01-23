@@ -56,7 +56,7 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
               SizedBox(
                 height: double.infinity,
                 child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
+                  //physics: const AlwaysScrollableScrollPhysics(),
                   padding: const EdgeInsets.only(
                     right: 10.0,
                     left: 10.0,

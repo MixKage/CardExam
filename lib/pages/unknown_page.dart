@@ -7,6 +7,7 @@ class UnknownPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Theme.of(context).backgroundColor,
         body: SafeArea(
           child: Column(
@@ -27,7 +28,15 @@ class UnknownPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.question_mark, size: 120),
+                  Text(
+                    '404',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 56,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 10.0),
                   Text(
                     'Страница\nне найдена\n;(',

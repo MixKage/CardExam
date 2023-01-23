@@ -18,7 +18,7 @@ class _TestPageState extends State<TestPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: Center(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               const TextField(style: TextStyle()),

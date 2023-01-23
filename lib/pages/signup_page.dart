@@ -69,7 +69,7 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Form(
             key: _formKey,
             child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
+              //physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.only(
                 right: 10.0,
                 left: 10.0,

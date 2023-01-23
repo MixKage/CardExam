@@ -9,12 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: rebuild Page not Found">
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: appBar theme and visible password button">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/signin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/theme_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/theme_constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/test_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/test_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/unknown_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/unknown_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login_page_widgets.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,24 +42,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last.edited.regexp": "",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "show.migrate.to.gradle.popup": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last.edited.regexp&quot;: &quot;&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/assets/fonts" />
@@ -89,7 +91,8 @@
       <workItem from="1674078750104" duration="2243000" />
       <workItem from="1674120266000" duration="15663000" />
       <workItem from="1674148238861" duration="3130000" />
-      <workItem from="1674249436525" duration="604000" />
+      <workItem from="1674249436525" duration="2533000" />
+      <workItem from="1674323877531" duration="12766000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -175,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674151362682</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix: appBar theme and visible password button">
+      <created>1674250192063</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1674250192063</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -200,7 +210,8 @@
     <MESSAGE value="add: new file for SignIn" />
     <MESSAGE value="add: normal toggle for change theme" />
     <MESSAGE value="fix: rebuild Page not Found" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: rebuild Page not Found" />
+    <MESSAGE value="fix: appBar theme and visible password button" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: appBar theme and visible password button" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
