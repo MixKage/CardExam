@@ -1,5 +1,7 @@
-﻿namespace BackendApi.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BackendApi.Models.Old;
+
 public class ModelClass
 {
     public record UserCreateInput(

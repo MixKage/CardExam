@@ -1,7 +1,7 @@
-﻿using BackendApi.Models;
+﻿using BackendApi.Const;
 using Microsoft.EntityFrameworkCore;
 
-
+namespace BackendApi.Models;
 
 public class ApplicationContext : DbContext
 {

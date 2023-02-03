@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Programms\\CardExam\\BackendApi\\BackendApi.csproj": {}
+    "/Users/mixkage/files/github/CardExam/BackendApi/BackendApi.csproj": {}
   },
   "projects": {
-    "E:\\Programms\\CardExam\\BackendApi\\BackendApi.csproj": {
+    "/Users/mixkage/files/github/CardExam/BackendApi/BackendApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Programms\\CardExam\\BackendApi\\BackendApi.csproj",
+        "projectUniqueName": "/Users/mixkage/files/github/CardExam/BackendApi/BackendApi.csproj",
         "projectName": "BackendApi",
-        "projectPath": "E:\\Programms\\CardExam\\BackendApi\\BackendApi.csproj",
-        "packagesPath": "C:\\Users\\Medved\\.nuget\\packages\\",
-        "outputPath": "E:\\Programms\\CardExam\\BackendApi\\obj\\",
+        "projectPath": "/Users/mixkage/files/github/CardExam/BackendApi/BackendApi.csproj",
+        "packagesPath": "/Users/mixkage/.nuget/packages/",
+        "outputPath": "/Users/mixkage/files/github/CardExam/BackendApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Medved\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/mixkage/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.12, )"
@@ -49,6 +51,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.12, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.26.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -61,6 +67,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.3.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.26.0, )"
             }
           },
           "imports": [
@@ -69,7 +79,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -81,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/mixkage/.dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
         }
       }
     }

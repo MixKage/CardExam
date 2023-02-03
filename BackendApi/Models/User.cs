@@ -6,8 +6,7 @@ public class User
     public string Login { get; set; }
     public string Password { get; set; }
     public DateTime DateOfRegistration { get; set; }
-    public string Univercity { get; set; }
-    public string Direction { get; set; }
-    public int Grade { get; set; }
+    public string University { get; set; }
+    public int Course { get; set; }
 }
 

@@ -1,4 +1,7 @@
-﻿static public class ConstantValues
+﻿namespace BackendApi.Const;
+
+public static class ConstantValues
 {
-    static public string PASSWORD = "lhas13";
+    //public const string PASSWORD = "lhas13";
+    public const string PASSWORD = "22131814";
 }
