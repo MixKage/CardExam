@@ -1,10 +1,20 @@
+import 'dart:io';
+
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/theme/theme_constants.dart';
 import 'package:cardexam/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+class PostHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(context) => super.createHttpClient(context)
+    ..badCertificateCallback =
+        (X509Certificate cert, String host, int port) => true;
+}
+
 void main() {
+  HttpOverrides.global = PostHttpOverrides();
   runApp(const MyApp());
 }
 

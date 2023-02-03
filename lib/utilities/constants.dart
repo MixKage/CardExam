@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const url = 'http://localhost:5119';
+
 const kHintTextStyle = TextStyle(
   color: Colors.white54,
   fontFamily: 'OpenSans',

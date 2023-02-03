@@ -1,4 +1,4 @@
-import 'package:cardexam/utilities/check_connection.dart';
+import 'package:cardexam/dio/server_service.dart';
 import 'package:cardexam/utilities/login_function.dart';
 import 'package:cardexam/widgets/widgets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -378,16 +378,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     tag: 'login_button',
                     child: BuildLoginBtn(
                       onPressed: () async {
-                        if (!await hasNetwork()) {
+                        if (!await isLiveServer()) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            mySnackBar(
-                              iconSnack: const Icon(
-                                Icons.wifi_off_outlined,
-                                color: Colors.white60,
-                              ),
-                              text: 'Отсутсвует интернет подключение, '
-                                  'войдите в режим гостя',
-                            ),
+                            checkServerConnection(),
                           );
                         } else if (_formKey.currentState!.validate() &&
                             selectedEducation != null &&

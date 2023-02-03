@@ -22,3 +22,12 @@ SnackBar mySnackBar({required Icon iconSnack, required String text}) =>
         ],
       ),
     );
+
+SnackBar checkServerConnection() => mySnackBar(
+      iconSnack: const Icon(
+        Icons.wifi_off_outlined,
+        color: Colors.white60,
+      ),
+      text: 'Отсутсвует подключение к серверу, '
+          'войдите в режим гостя',
+    );

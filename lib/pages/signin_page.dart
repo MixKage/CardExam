@@ -1,9 +1,10 @@
+import 'package:cardexam/dio/server_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
-import 'package:cardexam/utilities/check_connection.dart';
 import 'package:cardexam/utilities/login_function.dart';
 import 'package:cardexam/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 final _formKey = GlobalKey<FormState>();
 
 class SecondLoginPage extends StatefulWidget {
@@ -159,19 +160,12 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                   padding: const EdgeInsets.only(bottom: 40.0),
                   child: BuildSignUpBtn(
                     onPressed: () async {
-                      if (await hasNetwork()) {
+                      if (await isLiveServer()) {
                         await NavigationService.instance
                             .pushNamed(NavigationPaths.signUp);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          mySnackBar(
-                            iconSnack: const Icon(
-                              Icons.wifi_off_outlined,
-                              color: Colors.white60,
-                            ),
-                            text: 'Отсутсвует интернет подключение, '
-                                'войдите в режим гостя',
-                          ),
+                          checkServerConnection(),
                         );
                       }
                     },
