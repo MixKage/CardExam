@@ -9,17 +9,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="fix: appBar theme and visible password button">
-      <change afterPath="$PROJECT_DIR$/lib/dio/server_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: Check server work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dio/server_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dio/server_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/signin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/utilities/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utilities/constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/my_snack_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/my_snack_bar.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +102,8 @@
       <workItem from="1674148238861" duration="3130000" />
       <workItem from="1674249436525" duration="2533000" />
       <workItem from="1674323877531" duration="12766000" />
-      <workItem from="1675451791891" duration="6083000" />
+      <workItem from="1675451791891" duration="6159000" />
+      <workItem from="1675502562899" duration="2968000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -201,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674250192063</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add: Check server work">
+      <created>1675463036041</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1675463036041</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -238,7 +240,8 @@
     <MESSAGE value="add: normal toggle for change theme" />
     <MESSAGE value="fix: rebuild Page not Found" />
     <MESSAGE value="fix: appBar theme and visible password button" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: appBar theme and visible password button" />
+    <MESSAGE value="add: Check server work" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: Check server work" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -10,3 +10,13 @@ Future<bool> isLiveServer() async {
     return false;
   }
 }
+
+Future<int> getMinimalVersionApp() async {
+  try {
+    final dio = Dio();
+    final responce = await dio.get('$url/Server/minimal_version');
+    return responce.data;
+  } on DioError {
+    return -1;
+  }
+}

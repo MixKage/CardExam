@@ -1,6 +1,7 @@
 import 'package:cardexam/dio/server_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/theme/theme_manager.dart';
+import 'package:cardexam/utilities/constants.dart';
 import 'package:cardexam/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -37,13 +38,28 @@ class LoginPage extends StatelessWidget {
                     tag: 'login_button',
                     child: BuildLoginBtn(
                       onPressed: () async {
-                        if (await isLiveServer()) {
+                        final isLive = await isLiveServer();
+                        final minimalNeedVersion = await getMinimalVersionApp();
+                        if (isLive && minimalNeedVersion <= versionApp) {
                           await NavigationService.instance
                               .pushNamed(NavigationPaths.login);
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            checkServerConnection(),
-                          );
+                          if (!isLive) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              checkServerConnection(),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              mySnackBar(
+                                iconSnack: const Icon(
+                                  Icons.warning,
+                                  color: Colors.white60,
+                                ),
+                                text: 'Версия приложения устарела, '
+                                    'пожалуйста, обновите приложение',
+                              ),
+                            );
+                          }
                         }
                       },
                       buttonText: 'Войти',
@@ -73,13 +89,28 @@ class LoginPage extends StatelessWidget {
                     child: BuildSignUpBtn(
                       onPressed: () async {
                         // if (!await hasNetwork()) {
-                        if (await isLiveServer()) {
+                        final isLive = await isLiveServer();
+                        final minimalNeedVersion = await getMinimalVersionApp();
+                        if (isLive && minimalNeedVersion <= versionApp) {
                           await NavigationService.instance
                               .pushNamed(NavigationPaths.signUp);
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            checkServerConnection(),
-                          );
+                          if (!isLive) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              checkServerConnection(),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              mySnackBar(
+                                iconSnack: const Icon(
+                                  Icons.warning,
+                                  color: Colors.white60,
+                                ),
+                                text: 'Версия приложения устарела, '
+                                    'пожалуйста, обновите приложение',
+                              ),
+                            );
+                          }
                         }
                       },
                     ),
