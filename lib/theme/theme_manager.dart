@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ThemeManager with ChangeNotifier {
+class ThemeManager extends ChangeNotifier {
   ThemeManager._();
   static ThemeManager instance = ThemeManager._();
   factory ThemeManager() => instance;

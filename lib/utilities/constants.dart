@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const url = 'http://localhost:5119';
+const urls = 'https://localhost:7210';
 const versionApp = 1;
 
 const kHintTextStyle = TextStyle(

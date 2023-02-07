@@ -1,9 +1,10 @@
-import 'package:cardexam/dio/server_service.dart';
+import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/utilities/login_function.dart';
 import 'package:cardexam/widgets/widgets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shimmer/shimmer.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -19,6 +20,42 @@ class _SignUpPageState extends State<SignUpPage> {
   late TextEditingController _loginController;
   late TextEditingController _passwordController;
   late ValueNotifier<bool> _isPasswordVisibleNotifier;
+  Widget? _questionsWidgets;
+  //late List<QuestionHelper> myQuestionsHelper;
+
+  Future<List<String>> _getUniverse() async =>
+      InternetService.instance.getUniverses();
+
+  Future<List<Widget>> _getListWidgetQuestions() async {
+    final array = await InternetService.instance.getQuestionHelper();
+    final List<Widget> widgetsQuest = <Widget>[];
+    for (final quest in array) {
+      if (quest.question.substring(0, 4) == 'uri:') {
+        widgetsQuest.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+              vertical: 15,
+            ),
+            child: ElevatedButton(
+              onPressed: () {
+                debugPrint('Открыта ссылка ${quest.question.substring(4)}');
+              },
+              child: Text(quest.answer),
+            ),
+          ),
+        );
+      } else {
+        widgetsQuest.add(
+          MyListTile(
+            title: quest.question,
+            subtitle: quest.answer,
+          ),
+        );
+      }
+    }
+    return widgetsQuest;
+  }
 
   @override
   void initState() {
@@ -38,11 +75,11 @@ class _SignUpPageState extends State<SignUpPage> {
     super.dispose();
   }
 
-  final List<String> educationItems = [
-    'МИРЭА',
-    'Финансовый',
-    'ItHub',
-  ];
+  // final List<String> educationItems = [
+  //   'МИРЭА',
+  //   'Финансовый',
+  //   'ItHub',
+  // ];
   final List<String> courseItems = List<int>.generate(6, (i) => i + 1)
       .map((value) => value.toString())
       .toList();
@@ -58,6 +95,32 @@ class _SignUpPageState extends State<SignUpPage> {
             MyModalBottomSheet(
               context: context,
               listWidget: [
+                _questionsWidgets ??
+                    FutureBuilder<List<Widget>>(
+                      future: _getListWidgetQuestions(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return const Text(
+                            'Error',
+                            textAlign: TextAlign.center,
+                          );
+                        } else if (snapshot.hasData) {
+                          _questionsWidgets = Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: List.generate(
+                              snapshot.data!.length,
+                              (index) => snapshot.data![index],
+                            ),
+                          );
+                          return _questionsWidgets!;
+                        } else {
+                          return const Text('Loading...');
+                        }
+                      },
+                    ),
+              ],
+
+              /*[
                 const MyListTile(
                   title: 'Почему моего учебного заведения нет в списке?',
                   subtitle: 'Если вашего учебного заведения нет в списке, '
@@ -94,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: const Text('Добавить свой ВУЗ'),
                   ),
                 ),
-              ],
+              ]*/
               icon: Icon(
                 Icons.question_mark,
                 color: Theme.of(context).colorScheme.onPrimary,
@@ -268,52 +331,69 @@ class _SignUpPageState extends State<SignUpPage> {
                       horizontal: 20.0,
                       vertical: 14.0,
                     ),
-                    child: DropdownButtonFormField2(
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.zero,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                      ),
-                      isExpanded: true,
-                      hint: const Text(
-                        'Выберите учебное заведение',
-                      ),
-                      icon: const Icon(
-                        Icons.arrow_drop_down,
-                      ),
-                      iconSize: 30,
-                      buttonHeight: 60,
-                      buttonDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      buttonPadding: const EdgeInsets.only(right: 10),
-                      dropdownDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      items: educationItems
-                          .map(
-                            (item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(
-                                item,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
+                    child: FutureBuilder(
+                      future: _getUniverse(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return const Text('Error');
+                        } else if (snapshot.hasData) {
+                          return DropdownButtonFormField2(
+                            decoration: InputDecoration(
+                              isDense: true,
+                              contentPadding: EdgeInsets.zero,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
                               ),
                             ),
-                          )
-                          .toList(),
-                      validator: (value) {
-                        if (value == null) {
-                          return 'Обязательное поле';
+                            isExpanded: true,
+                            hint: const Text(
+                              'Выберите учебное заведение',
+                            ),
+                            icon: const Icon(
+                              Icons.arrow_drop_down,
+                            ),
+                            iconSize: 30,
+                            buttonHeight: 60,
+                            buttonDecoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            buttonPadding: const EdgeInsets.only(right: 10),
+                            dropdownDecoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            items: (snapshot.requireData as List?)
+                                ?.map(
+                                  (item) => DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                            validator: (value) {
+                              if (value == null) {
+                                return 'Обязательное поле';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              selectedEducation = value.toString();
+                            },
+                            onSaved: (value) {
+                              selectedEducation = value.toString();
+                            },
+                          );
+                        } else {
+                          return Shimmer.fromColors(
+                            baseColor: Colors.black12,
+                            highlightColor: Colors.white,
+                            child: const Text('Universe Loading...'),
+                          );
                         }
-                        return null;
-                      },
-                      onChanged: (value) {},
-                      onSaved: (value) {
-                        selectedEducation = value.toString();
                       },
                     ),
                   ),
@@ -365,7 +445,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         }
                         return null;
                       },
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        selectedCourse = value.toString();
+                      },
                       onSaved: (value) {
                         selectedCourse = value.toString();
                       },
@@ -378,13 +460,33 @@ class _SignUpPageState extends State<SignUpPage> {
                     tag: 'login_button',
                     child: BuildLoginBtn(
                       onPressed: () async {
-                        if (!await isLiveServer()) {
+                        if (!await InternetService.instance.isLiveServer()) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             checkServerConnection(),
                           );
                         } else if (_formKey.currentState!.validate() &&
                             selectedEducation != null &&
                             selectedCourse != null) {
+                          try {
+                            await InternetService.instance.createNewUser(
+                              mail: _emailController.text,
+                              username: _loginController.text,
+                              password: _passwordController.text,
+                              universe: selectedEducation!,
+                              course: selectedCourse!,
+                            );
+                          } on Exception catch (e) {
+                            print('ПОЙМАЛ!!!!!!!!!!!!!!');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              mySnackBar(
+                                iconSnack: const Icon(
+                                  Icons.error_outline,
+                                  color: Colors.white60,
+                                ),
+                                text: e.toString(),
+                              ),
+                            );
+                          }
                           debugPrint('Аккаунт создан');
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(

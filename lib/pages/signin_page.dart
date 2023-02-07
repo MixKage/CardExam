@@ -1,4 +1,4 @@
-import 'package:cardexam/dio/server_service.dart';
+import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/utilities/login_function.dart';
 import 'package:cardexam/widgets/widgets.dart';
@@ -160,7 +160,7 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                   padding: const EdgeInsets.only(bottom: 40.0),
                   child: BuildSignUpBtn(
                     onPressed: () async {
-                      if (await isLiveServer()) {
+                      if (await InternetService.instance.isLiveServer()) {
                         await NavigationService.instance
                             .pushNamed(NavigationPaths.signUp);
                       } else {

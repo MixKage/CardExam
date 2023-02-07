@@ -1,4 +1,4 @@
-import 'package:cardexam/dio/server_service.dart';
+import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/theme/theme_manager.dart';
 import 'package:cardexam/utilities/constants.dart';
@@ -38,18 +38,23 @@ class LoginPage extends StatelessWidget {
                     tag: 'login_button',
                     child: BuildLoginBtn(
                       onPressed: () async {
-                        final isLive = await isLiveServer();
-                        final minimalNeedVersion = await getMinimalVersionApp();
+                        final scaffoldMessengerState =
+                            ScaffoldMessenger.of(context);
+                        final isLive =
+                            await InternetService.instance.isLiveServer();
+                        final minimalNeedVersion = await InternetService
+                            .instance
+                            .getMinimalVersionApp();
                         if (isLive && minimalNeedVersion <= versionApp) {
                           await NavigationService.instance
                               .pushNamed(NavigationPaths.login);
                         } else {
                           if (!isLive) {
-                            ScaffoldMessenger.of(context).showSnackBar(
+                            scaffoldMessengerState.showSnackBar(
                               checkServerConnection(),
                             );
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
+                            scaffoldMessengerState.showSnackBar(
                               mySnackBar(
                                 iconSnack: const Icon(
                                   Icons.warning,
@@ -88,19 +93,24 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 40.0),
                     child: BuildSignUpBtn(
                       onPressed: () async {
+                        final scaffoldMessengerState =
+                            ScaffoldMessenger.of(context);
                         // if (!await hasNetwork()) {
-                        final isLive = await isLiveServer();
-                        final minimalNeedVersion = await getMinimalVersionApp();
+                        final isLive =
+                            await InternetService.instance.isLiveServer();
+                        final minimalNeedVersion = await InternetService
+                            .instance
+                            .getMinimalVersionApp();
                         if (isLive && minimalNeedVersion <= versionApp) {
                           await NavigationService.instance
                               .pushNamed(NavigationPaths.signUp);
                         } else {
                           if (!isLive) {
-                            ScaffoldMessenger.of(context).showSnackBar(
+                            scaffoldMessengerState.showSnackBar(
                               checkServerConnection(),
                             );
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
+                            scaffoldMessengerState.showSnackBar(
                               mySnackBar(
                                 iconSnack: const Icon(
                                   Icons.warning,
