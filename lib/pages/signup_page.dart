@@ -1,6 +1,7 @@
 import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/utilities/login_function.dart';
 import 'package:cardexam/widgets/widgets.dart';
+import 'package:dio/dio.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -468,24 +469,33 @@ class _SignUpPageState extends State<SignUpPage> {
                             selectedEducation != null &&
                             selectedCourse != null) {
                           try {
-                            await InternetService.instance.createNewUser(
-                              mail: _emailController.text,
-                              username: _loginController.text,
-                              password: _passwordController.text,
-                              universe: selectedEducation!,
-                              course: selectedCourse!,
+                            await InternetService.instance.executeRequest(
+                              InternetService.instance.createNewUser(
+                                mail: _emailController.text,
+                                username: _loginController.text,
+                                password: _passwordController.text,
+                                universe: selectedEducation!,
+                                course: selectedCourse!,
+                              ),
                             );
-                          } on Exception catch (e) {
-                            print('ПОЙМАЛ!!!!!!!!!!!!!!');
+                            await InternetService.instance.executeRequest(
+                              InternetService.instance.loginUser(),
+                            );
+                            await InternetService.instance.executeRequest(
+                              InternetService.instance.checkAuth(),
+                            );
+                          } on DioError catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               mySnackBar(
                                 iconSnack: const Icon(
                                   Icons.error_outline,
                                   color: Colors.white60,
                                 ),
-                                text: e.toString(),
+                                text: e.response.toString(),
                               ),
                             );
+                          } on Exception catch (e) {
+                            debugPrint(e.toString());
                           }
                           debugPrint('Аккаунт создан');
                         } else {

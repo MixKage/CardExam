@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cardexam/models/create_user.dart';
 import 'package:cardexam/models/question_helpers.dart';
+import 'package:cardexam/security/security.dart';
 import 'package:cardexam/utilities/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +14,7 @@ class InternetService {
 
   factory InternetService() => instance;
 
+  String uri = url;
   final dio = Dio();
 
   Future<bool> isLiveServer() async {
@@ -64,14 +66,76 @@ class InternetService {
     }
   }
 
+  Future<dynamic> executeRequest(Future func) async {
+    bool repeatAuth = false;
+    while (true) {
+      try {
+        return await func;
+      } on DioError catch (e) {
+        if (e.error.toString().contains('307')) {
+          debugPrint('ERROR: redirect');
+          uri = uri == url ? urls : url;
+          return func;
+        } else if (e.error.toString().contains('401')) {
+          debugPrint('ERROR: Auth');
+          if (!repeatAuth) {
+            await loginUser();
+            repeatAuth = true;
+            return func;
+          } else {
+            throw Exception('Неверный логин или пароль');
+          }
+        } else {
+          rethrow;
+        }
+      }
+    }
+  }
+
+  Future<bool> checkAuth() async {
+    try {
+      final response = await dio.get(
+        '$uri/Login/chek_auth',
+        options: Options(
+          contentType: Headers.jsonContentType,
+          headers: {
+            'accept': '*/*',
+            'Authorization':
+                'Bearer ${SecurityStorage.instance.getSecret(SecretInfo.jwt)}'
+          },
+        ),
+      );
+      return response.data;
+    } on DioError catch (e) {
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+
+  Future<void> loginUser() async {
+    final response = await dio.post(
+      '$uri/Login',
+      data: jsonEncode({
+        'loginOrEmail':
+            await SecurityStorage.instance.getSecret(SecretInfo.loginOrEmail),
+        'password':
+            await SecurityStorage.instance.getSecret(SecretInfo.password),
+      }),
+    );
+    if (response.statusCode == 200) {
+      await SecurityStorage.instance
+          .setSecret(SecretInfo.jwt, response.data.toString());
+    } else {
+      throw Exception('Не удалось войти');
+    }
+  }
+
   Future<void> createNewUser({
     required String mail,
     required String username,
     required String password,
     required String universe,
     required String course,
-    bool https = false,
-    bool notRepeat = false,
   }) async {
     final User newUser = User(
       mail,
@@ -82,8 +146,7 @@ class InternetService {
     );
     final String jsonString = jsonEncode(newUser);
     try {
-      final String uri = https ? urls : url;
-      final response = await dio.post(
+      await dio.post(
         '$uri/User',
         data: jsonString,
         options: Options(
@@ -91,35 +154,11 @@ class InternetService {
           headers: {'accept': '*/*'},
         ),
       );
-      debugPrint('User created');
-    } on DioError catch (e) {
-      if (e.message.contains('[307]')) {
-        try {
-          // createNewUser(
-          //   mail: mail,
-          //   username: username,
-          //   password: password,
-          //   universe: universe,
-          //   course: course,
-          //   https: true,
-          //   notRepeat: true,
-          // );
 
-          final response = await dio.post(
-            '$urls/User',
-            data: jsonString,
-            options: Options(
-              contentType: Headers.jsonContentType,
-              headers: {'accept': '*/*'},
-            ),
-          );
-        } on DioError catch (e) {
-          throw Exception(e.response.toString());
-        }
-      } else {
-        debugPrint(e.response.toString());
-        throw Exception(e.response.toString());
-      }
+      SecurityStorage.instance.setSecret(SecretInfo.loginOrEmail, username);
+      SecurityStorage.instance.setSecret(SecretInfo.password, password);
+    } on DioError {
+      rethrow;
     }
   }
 }

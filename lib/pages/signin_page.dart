@@ -1,5 +1,6 @@
 import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
+import 'package:cardexam/security/security.dart';
 import 'package:cardexam/utilities/login_function.dart';
 import 'package:cardexam/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -135,7 +136,20 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                           child: BuildLoginBtn(
                             onPressed: () => {
                               if (_formKey.currentState!.validate())
-                                {debugPrint('SIGNIN')}
+                                {
+                                  SecurityStorage.instance.setSecret(
+                                    SecretInfo.loginOrEmail,
+                                    _loginController.text,
+                                  ),
+                                  SecurityStorage.instance.setSecret(
+                                    SecretInfo.password,
+                                    _passwordController.text,
+                                  ),
+                                  debugPrint('SIGNIN'),
+                                  InternetService.instance.executeRequest(
+                                    InternetService.instance.loginUser(),
+                                  ),
+                                }
                             },
                             buttonText: 'Войти',
                           ),
