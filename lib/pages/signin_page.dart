@@ -1,8 +1,8 @@
 import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/security/security.dart';
-import 'package:cardexam/utilities/login_function.dart';
 import 'package:cardexam/widgets/widgets.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -75,9 +75,15 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.emailAddress,
                             autofocus: true,
-                            decoration:
-                                const InputDecoration(labelText: 'Почта'),
-                            validator: (value) => validEmail(value!),
+                            decoration: const InputDecoration(
+                              labelText: 'Логин или почта',
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Пустое поле';
+                              }
+                              return null;
+                            },
                           ),
                         ),
                         Padding(
@@ -134,22 +140,35 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                         Hero(
                           tag: 'login_button',
                           child: BuildLoginBtn(
-                            onPressed: () => {
-                              if (_formKey.currentState!.validate())
-                                {
-                                  SecurityStorage.instance.setSecret(
-                                    SecretInfo.loginOrEmail,
-                                    _loginController.text,
-                                  ),
-                                  SecurityStorage.instance.setSecret(
-                                    SecretInfo.password,
-                                    _passwordController.text,
-                                  ),
-                                  debugPrint('SIGNIN'),
-                                  InternetService.instance.executeRequest(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                SecurityStorage.instance.setSecret(
+                                  SecretInfo.loginOrEmail,
+                                  _loginController.text,
+                                );
+                                SecurityStorage.instance.setSecret(
+                                  SecretInfo.password,
+                                  _passwordController.text,
+                                );
+                                debugPrint('SIGNIN');
+                                try {
+                                  await InternetService.instance.executeRequest(
                                     InternetService.instance.loginUser(),
-                                  ),
+                                  );
+                                  await NavigationService.instance
+                                      .pushNamed(NavigationPaths.homePage);
+                                } on DioError catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    mySnackBar(
+                                      iconSnack: const Icon(
+                                        Icons.error_outline,
+                                        color: Colors.white60,
+                                      ),
+                                      text: e.response.toString(),
+                                    ),
+                                  );
                                 }
+                              }
                             },
                             buttonText: 'Войти',
                           ),

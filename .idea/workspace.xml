@@ -9,13 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: Create User">
-      <change afterPath="$PROJECT_DIR$/lib/security/security.dart" afterDir="false" />
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: upgrade InternetService finish registration finish jwt">
+      <change afterPath="$PROJECT_DIR$/lib/pages/home_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cardexam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cardexam.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dio/internet_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dio/internet_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/signin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
     </list>
@@ -117,7 +114,7 @@
       <workItem from="1675451791891" duration="6159000" />
       <workItem from="1675502562899" duration="3056000" />
       <workItem from="1675702529065" duration="24759000" />
-      <workItem from="1675861207523" duration="10035000" />
+      <workItem from="1675861207523" duration="12108000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -231,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675732695467</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add: upgrade InternetService finish registration finish jwt">
+      <created>1675879508006</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1675879508006</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -271,7 +275,8 @@
     <MESSAGE value="add: Check server work" />
     <MESSAGE value="add: Check minimal version app" />
     <MESSAGE value="add: Create User" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: Create User" />
+    <MESSAGE value="add: upgrade InternetService finish registration finish jwt" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: upgrade InternetService finish registration finish jwt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

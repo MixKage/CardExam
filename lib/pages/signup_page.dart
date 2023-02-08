@@ -1,4 +1,6 @@
 import 'package:cardexam/dio/internet_service.dart';
+import 'package:cardexam/navigation/navigation_service.dart';
+import 'package:cardexam/security/security.dart';
 import 'package:cardexam/utilities/login_function.dart';
 import 'package:cardexam/widgets/widgets.dart';
 import 'package:dio/dio.dart';
@@ -478,12 +480,19 @@ class _SignUpPageState extends State<SignUpPage> {
                                 course: selectedCourse!,
                               ),
                             );
+                            SecurityStorage.instance.setSecret(
+                              SecretInfo.loginOrEmail,
+                              _loginController.text,
+                            );
+                            SecurityStorage.instance.setSecret(
+                              SecretInfo.password,
+                              _passwordController.text,
+                            );
                             await InternetService.instance.executeRequest(
                               InternetService.instance.loginUser(),
                             );
-                            await InternetService.instance.executeRequest(
-                              InternetService.instance.checkAuth(),
-                            );
+                            await NavigationService.instance
+                                .pushNamed(NavigationPaths.homePage);
                           } on DioError catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               mySnackBar(

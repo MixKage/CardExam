@@ -1,3 +1,4 @@
+import 'package:cardexam/pages/home_page.dart';
 import 'package:cardexam/pages/login_page.dart';
 import 'package:cardexam/pages/signin_page.dart';
 import 'package:cardexam/pages/signup_page.dart';
@@ -10,6 +11,7 @@ enum NavigationPaths {
   test('/test'),
   login('/login'),
   signUp('/sign_up'),
+  homePage('/home_page'),
   unknown('/unknown');
 
   const NavigationPaths(this.path);
@@ -32,6 +34,7 @@ class NavigationService {
     '/test': (BuildContext context) => const TestPage(),
     '/login': (BuildContext context) => const SecondLoginPage(),
     '/sign_up': (BuildContext context) => const SignUpPage(),
+    '/home_page': (BuildContext context) => const HomePage(),
   };
 
   String get initialRoute => '/';
