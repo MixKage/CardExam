@@ -1,3 +1,4 @@
+import 'package:cardexam/database/locale_data.dart';
 import 'package:flutter/material.dart';
 
 class ThemeManager extends ChangeNotifier {
@@ -5,13 +6,18 @@ class ThemeManager extends ChangeNotifier {
   static ThemeManager instance = ThemeManager._();
   factory ThemeManager() => instance;
 
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode =
+      LocaleData.instance.getInfoBool(Data.settingsApp, SettingsApp.darkMode)
+          ? ThemeMode.dark
+          : ThemeMode.light;
 
   ThemeMode get themeMode => _themeMode;
 
   bool isDark() => themeMode == ThemeMode.dark;
 
   void toggleTheme(isDark) {
+    LocaleData.instance
+        .setInfo(Data.settingsApp, SettingsApp.darkMode, isDark.toString());
     _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }

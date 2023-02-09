@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cardexam/database/locale_data.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/theme/theme_constants.dart';
 import 'package:cardexam/theme/theme_manager.dart';
@@ -13,7 +14,8 @@ class PostHttpOverrides extends HttpOverrides {
         (X509Certificate cert, String host, int port) => true;
 }
 
-void main() {
+Future<void> main() async {
+  await LocaleData.instance.initLocaleDb();
   HttpOverrides.global = PostHttpOverrides();
   runApp(const MyApp());
 }

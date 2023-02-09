@@ -2,12 +2,14 @@ import 'package:cardexam/pages/home_page.dart';
 import 'package:cardexam/pages/login_page.dart';
 import 'package:cardexam/pages/signin_page.dart';
 import 'package:cardexam/pages/signup_page.dart';
+import 'package:cardexam/pages/start_page.dart';
 import 'package:cardexam/pages/test_page.dart';
 import 'package:cardexam/pages/unknown_page.dart';
 import 'package:flutter/material.dart';
 
 enum NavigationPaths {
   start('/'),
+  selectLogin('/select_login'),
   test('/test'),
   login('/login'),
   signUp('/sign_up'),
@@ -30,7 +32,8 @@ class NavigationService {
   }
 
   final Map<String, WidgetBuilder> routes = {
-    '/': (BuildContext context) => const LoginPage(),
+    '/': (BuildContext context) => const StartPage(),
+    '/select_login': (BuildContext context) => const LoginPage(),
     '/test': (BuildContext context) => const TestPage(),
     '/login': (BuildContext context) => const SecondLoginPage(),
     '/sign_up': (BuildContext context) => const SignUpPage(),
