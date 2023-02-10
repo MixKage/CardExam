@@ -24,13 +24,13 @@ class LocaleData {
   String? getInfo(Data data, Enum info) {
     final box = Hive.box(data.name);
     final String? ans = box.get(data.name);
-    debugPrint('${data.name} : ${info.name} : $ans');
+    debugPrint('Get: ${data.name} : ${info.name} : $ans');
     return ans;
   }
 
   bool getInfoBool(Data data, Enum info) {
     final String? ans = Hive.box(data.name).get(info.name);
-    debugPrint('${data.name} : ${info.name} : $ans');
+    debugPrint('Get bool: ${data.name} : ${info.name} : $ans');
     if (ans == null) {
       return false;
     }
@@ -39,17 +39,18 @@ class LocaleData {
 
   void setInfo(Data data, Enum info, String textInfo) {
     Hive.box(data.name).put(info.name, textInfo);
-    debugPrint('${data.name} : ${info.name} : $textInfo');
+    debugPrint('Set: ${data.name} : ${info.name} : $textInfo');
   }
 
   Future<void> initLocaleDb() async {
     await Hive.initFlutter();
     await Hive.openBox(Data.settingsApp.name);
-    if (getInfoBool(Data.settingsApp, SettingsApp.isFirstStart)) {
+    if (!getInfoBool(Data.settingsApp, SettingsApp.isFirstStart)) {
       Hive.box(Data.settingsApp.name)
-        ..put(SettingsApp.isFirstStart, true.toString())
-        ..put(SettingsApp.versionApp, versionApp.toString())
-        ..put(SettingsApp.darkMode, false.toString());
+        ..put(SettingsApp.isFirstStart.name, true.toString())
+        ..put(SettingsApp.versionApp.name, versionApp.toString())
+        ..put(SettingsApp.darkMode.name, false.toString());
+      debugPrint('InitDb');
     }
   }
 

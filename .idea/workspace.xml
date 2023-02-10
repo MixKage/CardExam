@@ -9,16 +9,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: homePage and redirect">
-      <change afterPath="$PROJECT_DIR$/lib/database/locale_data.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/start_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: hive and bad splashScreen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/database/locale_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/database/locale_data.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/theme_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/theme_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/signin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/start_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/start_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/security/security.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/security/security.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +118,8 @@
       <workItem from="1675502562899" duration="3056000" />
       <workItem from="1675702529065" duration="24759000" />
       <workItem from="1675861207523" duration="12183000" />
-      <workItem from="1675924921456" duration="15227000" />
+      <workItem from="1675924921456" duration="24219000" />
+      <workItem from="1676027209250" duration="2897000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -247,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675881543394</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add: hive and bad splashScreen">
+      <created>1675961822452</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1675961822452</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -289,7 +296,8 @@
     <MESSAGE value="add: Create User" />
     <MESSAGE value="add: upgrade InternetService finish registration finish jwt" />
     <MESSAGE value="add: homePage and redirect" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: homePage and redirect" />
+    <MESSAGE value="add: hive and bad splashScreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: hive and bad splashScreen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

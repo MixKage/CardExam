@@ -19,7 +19,6 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
   late TextEditingController _loginController;
   late TextEditingController _passwordController;
   late ValueNotifier<bool> _isPasswordVisibleNotifier;
-
   @override
   void initState() {
     super.initState();
@@ -34,6 +33,14 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
     _passwordController.dispose();
     _isPasswordVisibleNotifier.dispose();
     super.dispose();
+  }
+
+  Future<void> _getLoginOrEmail() async {
+    final String? text =
+        await SecurityStorage.instance.getSecret(SecretInfo.loginOrEmail);
+    if (text != null) {
+      _loginController.text = text;
+    }
   }
 
   @override
@@ -70,20 +77,23 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: TextFormField(
-                            controller: _loginController,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.emailAddress,
-                            autofocus: true,
-                            decoration: const InputDecoration(
-                              labelText: 'Логин или почта',
+                          child: FutureBuilder(
+                            future: _getLoginOrEmail(),
+                            builder: (context, snapshot) => TextFormField(
+                              controller: _loginController,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.emailAddress,
+                              autofocus: true,
+                              decoration: const InputDecoration(
+                                labelText: 'Логин или почта',
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Пустое поле';
+                                }
+                                return null;
+                              },
                             ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Пустое поле';
-                              }
-                              return null;
-                            },
                           ),
                         ),
                         Padding(

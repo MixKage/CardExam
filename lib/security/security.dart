@@ -17,4 +17,6 @@ class SecurityStorage {
   Future<void> setSecret(SecretInfo secret, String value) async {
     await storage.write(key: secret.name, value: value);
   }
+
+  Future<void> deleteAll() async => storage.deleteAll();
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class StartPage extends StatelessWidget {
-  void startApp() async {
+  Future<void> startApp() async {
     if (LocaleData.instance
         .getInfoBool(Data.settingsApp, SettingsAppBool.isFirstStart)) {
       LocaleData.instance.initLocaleDb();

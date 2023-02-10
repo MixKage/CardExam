@@ -1,5 +1,6 @@
 import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
+import 'package:cardexam/security/security.dart';
 import 'package:cardexam/theme/theme_manager.dart';
 import 'package:cardexam/utilities/constants.dart';
 import 'package:cardexam/widgets/widgets.dart';
@@ -76,8 +77,13 @@ class LoginPage extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   TextButton(
-                    onPressed: () {
-                      debugPrint('Продолжить как гость');
+                    onPressed: () async {
+                      await SecurityStorage.instance
+                          .setSecret(SecretInfo.password, '');
+                      await SecurityStorage.instance
+                          .setSecret(SecretInfo.jwt, '');
+                      await NavigationService.instance
+                          .pushNamed(NavigationPaths.homePage);
                     },
                     child: const Text(
                       'Продолжить как гость',

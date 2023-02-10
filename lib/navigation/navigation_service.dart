@@ -58,6 +58,23 @@ class NavigationService {
     );
   }
 
+  Future<void> pushNamedAndRemoveUntil(NavigationPaths pathEnum) async {
+    await _globalKey.currentState?.pushAndRemoveUntil(
+      PageRouteBuilder(
+        settings: RouteSettings(name: pathEnum.path),
+        pageBuilder: (
+          BuildContext context,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation,
+        ) =>
+            routes[pathEnum.path]?.call(context) ?? const UnknownPage(),
+        transitionsBuilder: (_, Animation<double> a, __, Widget c) =>
+            FadeTransition(opacity: a, child: c),
+      ),
+      (route) => false,
+    );
+  }
+
   Route<dynamic>? onGenerateRoute(RouteSettings settings) => PageRouteBuilder(
         settings: settings,
         pageBuilder: (
