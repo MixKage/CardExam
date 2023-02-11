@@ -22,7 +22,6 @@ ThemeData lightTheme = ThemeData(
     centerTitle: true,
   ),
   scaffoldBackgroundColor: backgroundColorLight,
-
   colorScheme: ColorScheme.fromSwatch().copyWith(
     primary: accentTextColorLight,
     secondary: backgroundColorLightUp,
@@ -30,21 +29,19 @@ ThemeData lightTheme = ThemeData(
     onPrimary: Colors.black87,
     primaryContainer: containerLight,
   ),
-
+  toggleableActiveColor: accentTextColorLight,
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
       splashFactory: InkSparkle.splashFactory,
       foregroundColor: MaterialStateProperty.all<Color>(accentTextColorLight),
     ),
   ),
-
   textTheme: const TextTheme(
     bodySmall: TextStyle(
       color: Colors.black54,
       fontWeight: FontWeight.w400,
     ),
   ),
-
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 3.0,
@@ -56,7 +53,6 @@ ThemeData lightTheme = ThemeData(
       ),
     ),
   ),
-
   inputDecorationTheme: InputDecorationTheme(
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
@@ -96,11 +92,14 @@ ThemeData darkTheme = ThemeData(
     color: Colors.white30,
   ),
 
+  toggleableActiveColor: accentTextColorDark,
   textTheme: const TextTheme(
     bodySmall: TextStyle(
       color: Colors.white54,
       fontWeight: FontWeight.w400,
     ),
+    titleLarge: TextStyle(color: Colors.white),
+    displayLarge: TextStyle(color: Colors.white),
   ),
 
   inputDecorationTheme: InputDecorationTheme(

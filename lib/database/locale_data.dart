@@ -1,4 +1,6 @@
+import 'package:cardexam/theme/theme_manager.dart';
 import 'package:cardexam/utilities/constants.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -21,15 +23,16 @@ class LocaleData {
 
   factory LocaleData() => instance;
 
-  String? getInfo(Data data, Enum info) {
-    final box = Hive.box(data.name);
-    final String? ans = box.get(data.name);
+  Future<String?> getInfo(Data data, Enum info) async {
+    final box = await Hive.openBox(data.name);
+    final String? ans = await box.get(info.name);
     debugPrint('Get: ${data.name} : ${info.name} : $ans');
     return ans;
   }
 
-  bool getInfoBool(Data data, Enum info) {
-    final String? ans = Hive.box(data.name).get(info.name);
+  Future<bool> getInfoBool(Data data, Enum info) async {
+    final box = await Hive.openBox(data.name);
+    final String? ans = box.get(info.name);
     debugPrint('Get bool: ${data.name} : ${info.name} : $ans');
     if (ans == null) {
       return false;
@@ -37,23 +40,37 @@ class LocaleData {
     return ans.parseBool();
   }
 
-  void setInfo(Data data, Enum info, String textInfo) {
-    Hive.box(data.name).put(info.name, textInfo);
+  Future<void> setInfo(Data data, Enum info, String textInfo) async {
+    final box = await Hive.openBox(data.name);
+    await box.put(info.name, textInfo);
     debugPrint('Set: ${data.name} : ${info.name} : $textInfo');
   }
 
   Future<void> initLocaleDb() async {
-    await Hive.initFlutter();
-    await Hive.openBox(Data.settingsApp.name);
-    if (!getInfoBool(Data.settingsApp, SettingsApp.isFirstStart)) {
-      Hive.box(Data.settingsApp.name)
-        ..put(SettingsApp.isFirstStart.name, true.toString())
-        ..put(SettingsApp.versionApp.name, versionApp.toString())
-        ..put(SettingsApp.darkMode.name, false.toString());
-      debugPrint('InitDb');
+    final box = await Hive.openBox(Data.settingsApp.name);
+    if (!await getInfoBool(Data.settingsApp, SettingsApp.isFirstStart)) {
+      await box.put(
+        SettingsApp.darkMode.name,
+        'true',
+      );
+      await box.put(
+        SettingsApp.versionApp.name,
+        versionApp.toString(),
+      );
+      await box.put(
+        SettingsApp.isFirstStart.name,
+        'true',
+      );
+      ThemeManager.instance.toggleTheme(true);
+      debugPrint('Init locale Db');
     }
   }
 
   bool getDarkTheme() =>
-      getInfo(Data.settingsApp, SettingsApp.darkMode).parseBool();
+      Hive.box(Data.settingsApp.name).get(SettingsApp.darkMode.name) == 'true';
+
+  Future<void> deleteAll() async {
+    final box = await Hive.openBox(Data.settingsApp.name);
+    await box.deleteFromDisk();
+  }
 }

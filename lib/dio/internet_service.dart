@@ -66,23 +66,29 @@ class InternetService {
     }
   }
 
-  Future<dynamic> executeRequest(Future func) async {
+  Future<dynamic> executeRequest(Future Function() func) async {
+    int tryExecute = 0;
     bool repeatAuth = false;
     while (true) {
       try {
-        return await func;
+        return await func();
       } on DioError catch (e) {
+        tryExecute++;
+        if (tryExecute > 4) {
+          rethrow;
+        }
         if (e.error.toString().contains('307')) {
           debugPrint('ERROR: redirect');
           uri = uri == url ? urls : url;
-          return func;
         } else if (e.error.toString().contains('401')) {
           debugPrint('ERROR: Auth');
           if (!repeatAuth) {
             await loginUser();
             repeatAuth = true;
-            return func;
+            debugPrint('ERROR: Repeat Auth');
+            // return func();
           } else {
+            debugPrint('ERROR: Repeat Auth 2');
             throw Exception('Неверный логин или пароль');
           }
         } else {

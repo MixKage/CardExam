@@ -6,6 +6,7 @@ import 'package:cardexam/theme/theme_constants.dart';
 import 'package:cardexam/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class PostHttpOverrides extends HttpOverrides {
   @override
@@ -15,6 +16,7 @@ class PostHttpOverrides extends HttpOverrides {
 }
 
 Future<void> main() async {
+  await Hive.initFlutter();
   await LocaleData.instance.initLocaleDb();
   HttpOverrides.global = PostHttpOverrides();
   runApp(const MyApp());

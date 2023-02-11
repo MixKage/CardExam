@@ -7,9 +7,7 @@ class ThemeManager extends ChangeNotifier {
   factory ThemeManager() => instance;
 
   ThemeMode _themeMode =
-      LocaleData.instance.getInfoBool(Data.settingsApp, SettingsApp.darkMode)
-          ? ThemeMode.dark
-          : ThemeMode.light;
+      LocaleData.instance.getDarkTheme() ? ThemeMode.dark : ThemeMode.light;
 
   ThemeMode get themeMode => _themeMode;
 

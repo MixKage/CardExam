@@ -163,7 +163,8 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                                 debugPrint('SIGNIN');
                                 try {
                                   await InternetService.instance.executeRequest(
-                                    InternetService.instance.loginUser(),
+                                    () async =>
+                                        InternetService.instance.loginUser(),
                                   );
                                   await NavigationService.instance
                                       .pushNamed(NavigationPaths.homePage);

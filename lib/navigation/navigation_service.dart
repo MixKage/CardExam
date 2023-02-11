@@ -1,4 +1,4 @@
-import 'package:cardexam/pages/home_page.dart';
+import 'package:cardexam/pages/bottom_nav_bar.dart';
 import 'package:cardexam/pages/login_page.dart';
 import 'package:cardexam/pages/signin_page.dart';
 import 'package:cardexam/pages/signup_page.dart';
@@ -37,7 +37,7 @@ class NavigationService {
     '/test': (BuildContext context) => const TestPage(),
     '/login': (BuildContext context) => const SecondLoginPage(),
     '/sign_up': (BuildContext context) => const SignUpPage(),
-    '/home_page': (BuildContext context) => const HomePage(),
+    '/home_page': (BuildContext context) => const BottomNavBar()
   };
 
   String get initialRoute => '/';

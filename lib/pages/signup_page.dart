@@ -472,7 +472,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             selectedCourse != null) {
                           try {
                             await InternetService.instance.executeRequest(
-                              InternetService.instance.createNewUser(
+                              () => InternetService.instance.createNewUser(
                                 mail: _emailController.text,
                                 username: _loginController.text,
                                 password: _passwordController.text,
@@ -489,7 +489,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               _passwordController.text,
                             );
                             await InternetService.instance.executeRequest(
-                              InternetService.instance.loginUser(),
+                              () => InternetService.instance.loginUser(),
                             );
                             await NavigationService.instance
                                 .pushNamed(NavigationPaths.homePage);
