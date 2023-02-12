@@ -242,6 +242,10 @@ class _SettingsPageState extends State<SettingsPage> {
                           SecretInfo.password,
                           '',
                         );
+                        SecurityStorage.instance.setSecret(
+                          SecretInfo.jwt,
+                          '',
+                        );
                         await NavigationService.instance
                             .pushNamedAndRemoveUntil(
                           NavigationPaths.selectLogin,

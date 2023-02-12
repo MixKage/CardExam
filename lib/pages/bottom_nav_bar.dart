@@ -9,7 +9,7 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PersistentTabController controller;
-    controller = PersistentTabController(initialIndex: 4);
+    controller = PersistentTabController(initialIndex: 3);
 
     List<Widget> buildScreens() => [
           Scaffold(

@@ -10,22 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: navBar and repare StartPage and LocalStorage and SettingsPage and NotificationPage">
-      <change afterPath="$PROJECT_DIR$/lib/pages/bottom_nav_bar.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/notification_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/settings_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widgets/my_row_tile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/notify_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/database/locale_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/database/locale_data.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dio/internet_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dio/internet_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/navigation/navigation_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/signin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/start_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/start_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/theme_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/theme_constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/theme_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/theme_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/bottom_nav_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/bottom_nav_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/notification_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/notification_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/settings_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/settings_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +117,8 @@
       <workItem from="1675861207523" duration="12183000" />
       <workItem from="1675924921456" duration="24219000" />
       <workItem from="1676027209250" duration="4602000" />
-      <workItem from="1676104800029" duration="34846000" />
+      <workItem from="1676104800029" duration="35017000" />
+      <workItem from="1676200969780" duration="8258000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -269,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676033711172</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="add: navBar and repare StartPage and LocalStorage and SettingsPage and NotificationPage">
+      <created>1676150633653</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1676150633653</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">

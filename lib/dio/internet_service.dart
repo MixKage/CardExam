@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cardexam/models/create_user.dart';
+import 'package:cardexam/models/notify_model.dart';
 import 'package:cardexam/models/question_helpers.dart';
 import 'package:cardexam/security/security.dart';
 import 'package:cardexam/utilities/constants.dart';
@@ -107,7 +108,7 @@ class InternetService {
           headers: {
             'accept': '*/*',
             'Authorization':
-                'Bearer ${SecurityStorage.instance.getSecret(SecretInfo.jwt)}'
+                'Bearer ${await SecurityStorage.instance.getSecret(SecretInfo.jwt)}'
           },
         ),
       );
@@ -166,5 +167,69 @@ class InternetService {
     } on DioError {
       rethrow;
     }
+  }
+
+  Future<List<NotifyModel>> GetNotify() async {
+    try {
+      var response = await dio.get(
+        '$uri/Notify',
+        options: Options(
+          contentType: Headers.jsonContentType,
+          headers: {
+            'accept': '*/*',
+            'Authorization':
+                'Bearer ${await SecurityStorage.instance.getSecret(SecretInfo.jwt)}'
+          },
+        ),
+      );
+
+      final List<NotifyModel> notifies = <NotifyModel>[];
+
+      for (int i = 0; i < response.data.length; i++) {
+        final DateTime dateTime = DateTime.parse(
+          (response.data[i] as Map<String, dynamic>)['dateNotify'].toString(),
+        );
+        final String date = '${dateTime.day} ${getMonth(dateTime.month)}';
+        notifies.add(
+          NotifyModel(
+            (response.data[i] as Map<String, dynamic>)['textNotify'].toString(),
+            date,
+          ),
+        );
+      }
+      return notifies;
+    } on DioError {
+      rethrow;
+    }
+  }
+
+  String getMonth(int index) {
+    switch (index) {
+      case 1:
+        return 'января';
+      case 2:
+        return 'февраля';
+      case 3:
+        return 'марта';
+      case 4:
+        return 'апреля';
+      case 5:
+        return 'мая';
+      case 6:
+        return 'июня';
+      case 7:
+        return 'июля';
+      case 8:
+        return 'августа';
+      case 9:
+        return 'сентября';
+      case 10:
+        return 'октября';
+      case 11:
+        return 'ноября';
+      case 12:
+        return 'декабря';
+    }
+    return 'ошибка';
   }
 }
