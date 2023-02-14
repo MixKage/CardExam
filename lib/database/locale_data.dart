@@ -18,7 +18,7 @@ extension BoolParsing on String? {
 
 class LocaleData {
   LocaleData._();
-
+  bool isGuest = false;
   static LocaleData instance = LocaleData._();
 
   factory LocaleData() => instance;

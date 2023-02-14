@@ -1,3 +1,4 @@
+import 'package:cardexam/database/locale_data.dart';
 import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/security/security.dart';
@@ -78,6 +79,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () async {
+                      LocaleData.instance.isGuest = true;
                       await SecurityStorage.instance
                           .setSecret(SecretInfo.password, '');
                       await SecurityStorage.instance

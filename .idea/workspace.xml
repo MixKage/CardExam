@@ -9,15 +9,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: get Notify">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="2e4354ed-1574-4831-9fa5-340f4c05f46e" name="Changes" comment="add: hide and show navBar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dio/internet_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dio/internet_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/bottom_nav_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/bottom_nav_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/database/locale_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/database/locale_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/notification_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/notification_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/my_modal_bottom_sheet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/my_modal_bottom_sheet.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/signin_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signin_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/signup_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/start_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/start_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +123,7 @@
       <workItem from="1676200969780" duration="8303000" />
       <workItem from="1676286996148" duration="1048000" />
       <workItem from="1676299415370" duration="1763000" />
-      <workItem from="1676315794559" duration="3943000" />
+      <workItem from="1676315794559" duration="13437000" />
     </task>
     <task id="LOCAL-00001" summary="add: SignIn Page">
       <created>1673652226674</created>
@@ -280,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676240424045</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="add: hide and show navBar">
+      <created>1676367879990</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1676367879990</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -326,7 +332,8 @@
     <MESSAGE value="add: pushNamedAndRemoveUntil and deleteAll" />
     <MESSAGE value="add: navBar and repare StartPage and LocalStorage and SettingsPage and NotificationPage" />
     <MESSAGE value="add: get Notify" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: get Notify" />
+    <MESSAGE value="add: hide and show navBar" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: hide and show navBar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

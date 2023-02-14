@@ -7,6 +7,7 @@ import 'package:shimmer/shimmer.dart';
 
 class StartPage extends StatelessWidget {
   Future<void> _goToNextPage(bool login) async {
+    LocaleData.instance.isGuest = !login;
     if (login) {
       await NavigationService.instance.pushNamed(NavigationPaths.homePage);
     } else {
@@ -43,31 +44,34 @@ class StartPage extends StatelessWidget {
             child: FutureBuilder(
               future: _startApp(),
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  SchedulerBinding.instance.addPostFrameCallback((_) {
-                    if (snapshot.hasData.toString() == 'true') {
-                      _goToNextPage(true);
-                    } else {
-                      // Недостижимый код
-                      _goToNextPage(false);
-                    }
-                  });
-                  return FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Shimmer.fromColors(
-                      baseColor: Colors.black87,
-                      highlightColor: Colors.white60,
-                      child: const Text(
-                        'Card\nExam',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 90,
-                          fontWeight: FontWeight.w500,
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    SchedulerBinding.instance.addPostFrameCallback((_) {
+                      if (snapshot.hasData.toString() == 'true') {
+                        _goToNextPage(true);
+                      } else {
+                        // Недостижимый код
+                        _goToNextPage(false);
+                      }
+                    });
+                    return FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.black87,
+                        highlightColor: Colors.white60,
+                        child: const Text(
+                          'Card\nExam',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 90,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                } else if (snapshot.hasError) {
+                    );
+                  }
+                }
+                if (snapshot.hasError) {
                   SchedulerBinding.instance.addPostFrameCallback((_) {
                     _goToNextPage(false);
                   });

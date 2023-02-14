@@ -1,3 +1,4 @@
+import 'package:cardexam/database/locale_data.dart';
 import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
 import 'package:cardexam/security/security.dart';
@@ -166,6 +167,7 @@ class _SecondLoginPageState extends State<SecondLoginPage> {
                                     () async =>
                                         InternetService.instance.loginUser(),
                                   );
+                                  LocaleData.instance.isGuest = false;
                                   await NavigationService.instance
                                       .pushNamed(NavigationPaths.homePage);
                                 } on DioError catch (e) {
