@@ -1,5 +1,7 @@
+import 'package:cardexam/pages/bottom_nav_bar.dart';
 import 'package:cardexam/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 const Color _containerDark = Color.fromRGBO(38, 38, 38, 1.0);
 const Color _containerLight = Color.fromRGBO(246, 246, 246, 1.0);
@@ -37,8 +39,9 @@ class _MyModalBottomSheetState extends State<MyModalBottomSheet> {
 
   @override
   Widget build(BuildContext context) => IconButton(
-        onPressed: () {
-          showModalBottomSheet(
+        onPressed: () async {
+          Provider.of<HideNavBar>(context, listen: false).hideNavigationBar();
+          await showModalBottomSheet(
             backgroundColor: Colors.transparent,
             isScrollControlled: true,
             context: context,
@@ -108,6 +111,7 @@ class _MyModalBottomSheetState extends State<MyModalBottomSheet> {
               ),
             ),
           );
+          Provider.of<HideNavBar>(context, listen: false).hideNavigationBar();
         },
         icon: widget.icon,
       );

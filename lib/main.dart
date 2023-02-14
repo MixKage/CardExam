@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:cardexam/database/locale_data.dart';
 import 'package:cardexam/navigation/navigation_service.dart';
+import 'package:cardexam/pages/bottom_nav_bar.dart';
 import 'package:cardexam/theme/theme_constants.dart';
 import 'package:cardexam/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
 
 class PostHttpOverrides extends HttpOverrides {
   @override
@@ -57,19 +59,26 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
-        value: ThemeManager.instance.isDark()
-            ? SystemUiOverlayStyle.light
-            : SystemUiOverlayStyle.dark,
-        child: MaterialApp(
-          navigatorKey: _navigatorKey,
-          darkTheme: darkTheme,
-          theme: lightTheme,
-          themeMode: ThemeManager.instance.themeMode,
-          initialRoute: navigationService.initialRoute,
-          debugShowCheckedModeBanner: false,
-          routes: navigationService.routes,
-          onGenerateRoute: navigationService.onGenerateRoute,
+  Widget build(BuildContext context) => MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => HideNavBar(),
+          )
+        ],
+        child: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: ThemeManager.instance.isDark()
+              ? SystemUiOverlayStyle.light
+              : SystemUiOverlayStyle.dark,
+          child: MaterialApp(
+            navigatorKey: _navigatorKey,
+            darkTheme: darkTheme,
+            theme: lightTheme,
+            themeMode: ThemeManager.instance.themeMode,
+            initialRoute: navigationService.initialRoute,
+            debugShowCheckedModeBanner: false,
+            routes: navigationService.routes,
+            onGenerateRoute: navigationService.onGenerateRoute,
+          ),
         ),
       );
 }

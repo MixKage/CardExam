@@ -2,6 +2,16 @@ import 'package:cardexam/pages/notification_page.dart';
 import 'package:cardexam/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:provider/provider.dart';
+
+class HideNavBar extends ChangeNotifier {
+  bool hideNavBar = false;
+
+  void hideNavigationBar() {
+    hideNavBar = !hideNavBar;
+    notifyListeners();
+  }
+}
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
@@ -10,6 +20,7 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     PersistentTabController controller;
     controller = PersistentTabController(initialIndex: 3);
+    bool hideNavBar = Provider.of<HideNavBar>(context).hideNavBar;
 
     List<Widget> buildScreens() => [
           Scaffold(
@@ -142,6 +153,7 @@ class BottomNavBar extends StatelessWidget {
           true, // This needs to be true if you want to move up the screen when
       // keyboard appears. Default is true.
       stateManagement: true, // Default is true.
+      hideNavigationBar: hideNavBar,
       hideNavigationBarWhenKeyboardShows:
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while
       // using this argument. Default is true.

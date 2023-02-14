@@ -1,6 +1,7 @@
 import 'package:cardexam/dio/internet_service.dart';
 import 'package:cardexam/models/notify_model.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -35,7 +36,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   onPressed: () async {
                     print(
                       (await InternetService.instance.executeRequest(
-                        () => InternetService.instance.GetNotify(),
+                        () => InternetService.instance.getNotify(),
                       ) as List)
                           .cast<NotifyModel>()[0]
                           .text,
@@ -59,14 +60,14 @@ class _NotificationPageState extends State<NotificationPage> {
             SliverToBoxAdapter(
               child: FutureBuilder(
                 future: InternetService.instance.executeRequest(
-                  () => InternetService.instance.GetNotify(),
+                  () => InternetService.instance.getNotify(),
                 ),
                 builder: (context, snapshot) {
                   if (snapshot.hasData &&
                       snapshot.connectionState == ConnectionState.done) {
                     final notifies =
                         (snapshot.data! as List).cast<NotifyModel>();
-                    return ListView.builder(
+                    return ListView.separated(
                       shrinkWrap: true,
                       controller: _scrollController,
                       itemCount: notifies.length,
@@ -76,22 +77,43 @@ class _NotificationPageState extends State<NotificationPage> {
                             notifies[index].dateNotify,
                             style: const TextStyle(
                               fontSize: 16,
+                              color: Colors.grey,
                             ),
                           ),
                           Text(
                             notifies[index].text,
+                            textAlign: TextAlign.start,
                             style: const TextStyle(
                               fontSize: 18,
                             ),
-                          )
+                          ),
                         ],
                       ),
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Divider(),
                     );
                   }
 
                   /// handles others as you did on question
                   else {
-                    return const CircularProgressIndicator();
+                    return Padding(
+                      padding: const EdgeInsets.all(80.0),
+                      child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Shimmer.fromColors(
+                          baseColor: Colors.black87,
+                          highlightColor: Colors.white60,
+                          child: const Text(
+                            'Card\nExam',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 48,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
                   }
                 },
               ),

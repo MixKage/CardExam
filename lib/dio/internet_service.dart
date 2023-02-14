@@ -169,7 +169,7 @@ class InternetService {
     }
   }
 
-  Future<List<NotifyModel>> GetNotify() async {
+  Future<List<NotifyModel>> getNotify() async {
     try {
       var response = await dio.get(
         '$uri/Notify',
