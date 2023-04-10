@@ -1,8 +1,8 @@
 package models
 
 import (
-	"github.com/BackendApiCardExam/pkg/config"
-	"github.com/jinzhu/gorm"
+	"github.com/BackendApiCardExam/api/config"
+	"gorm.io/gorm"
 )
 
 var db *gorm.DB
@@ -28,12 +28,14 @@ type Comment struct {
 	gorm.Model
 	IDUser int    `json:"IdUser"`
 	Text   string `json:"Text"`
+	CardID int
 }
 
 type QuestionAnswer struct {
 	gorm.Model
 	Question string `json:"Question"`
 	Answer   string `json:"Answer"`
+	CardID   int
 }
 
 func init() {
@@ -42,20 +44,13 @@ func init() {
 	db.AutoMigrate(&Card{}, &Comment{}, &QuestionAnswer{})
 }
 
-func (c *Card) CreateCard() *Card {
-	db.NewRecord(c)
+func (c *Card) CreateCardToDb() *Card {
 	db.Create(&c)
 	return c
 }
 
-func GetCardById(Id int64) (*Card, *gorm.DB) {
+func GetCardByIdFromDb(Id int64) (*Card, *gorm.DB) {
 	var getCard Card
-	db.Where("ID=?", Id).Find(&getCard)
-	if err := db.Raw("SELECT question_answers.id, question_answers.created_at, question_answers.updated_at, question_answers.deleted_at, question_answers.question, question_answers.answer FROM cards INNER JOIN question_answers ON question_answers.card_id = cards.id Where cards.id = ?", Id).Scan(&getCard.QuestionsAnswers).Error; err != nil {
-		panic(err)
-	}
-	if err := db.Raw("SELECT comments.id, comments.created_at, comments.updated_at, comments.deleted_at, comments.id_user, comments.text FROM cards INNER JOIN comments ON comments.card_id = cards.id WHERE comments.id = ?", Id).Scan(&getCard.Comments).Error; err != nil {
-		panic(err)
-	}
+	db.Preload("QuestionsAnswers").Preload("Comments").Find(&getCard, "ID = ?", Id)
 	return &getCard, db
 }
