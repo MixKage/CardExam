@@ -16,6 +16,7 @@ class StartPage extends StatelessWidget {
   }
 
   Future<bool> _startApp() async {
+    LocaleData.instance.activateDb();
     if (await LocaleData.instance
             .getInfo(Data.settingsApp, SettingsApp.isFirstStart) ==
         'true') {
@@ -70,6 +71,11 @@ class StartPage extends StatelessWidget {
                       ),
                     );
                   }
+                }
+                if (snapshot.connectionState == ConnectionState.none) {
+                  SchedulerBinding.instance.addPostFrameCallback((_) {
+                    _goToNextPage(false);
+                  });
                 }
                 if (snapshot.hasError) {
                   SchedulerBinding.instance.addPostFrameCallback((_) {

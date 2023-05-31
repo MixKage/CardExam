@@ -1,3 +1,4 @@
+import 'package:cardexam/pages/local_page.dart';
 import 'package:cardexam/pages/notification_page.dart';
 import 'package:cardexam/pages/settings_page.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PersistentTabController controller;
-    controller = PersistentTabController(initialIndex: 3);
+    controller = PersistentTabController(initialIndex: 1);
     bool hideNavBar = Provider.of<HideNavBar>(context).hideNavBar;
 
     List<Widget> buildScreens() => [
@@ -40,39 +41,35 @@ class BottomNavBar extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: ListView(
                     shrinkWrap: true,
-                    children: const [
-                      Text('1'),
+                    children: [
+                      Column(
+                        children: const [
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Icon(
+                            Icons.build,
+                            size: 72,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(15.0),
+                            child: Text(
+                              'В разработке',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          Scaffold(
-            body: CustomScrollView(
-              slivers: <Widget>[
-                SliverAppBar.large(
-                  centerTitle: true,
-                  title: Text(
-                    'Сохранённое',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-                // Just some content big enough to have something to scroll.
-                SliverToBoxAdapter(
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: const [
-                      Text('2'),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          const LocalPage(),
           Scaffold(
             body: CustomScrollView(
               slivers: <Widget>[
@@ -91,10 +88,26 @@ class BottomNavBar extends StatelessWidget {
                   child: ListView(
                     shrinkWrap: true,
                     children: [
-                      SwitchListTile(
-                        title: const Text('Темная тема'),
-                        onChanged: (value) {},
-                        value: true,
+                      Column(
+                        children: const [
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Icon(
+                            Icons.build,
+                            size: 72,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(15.0),
+                            child: Text(
+                              'В разработке',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

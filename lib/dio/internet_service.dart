@@ -20,7 +20,7 @@ class InternetService {
 
   Future<bool> isLiveServer() async {
     try {
-      final response = await dio.get('$url/Server/ping');
+      final response = await dio.get('$url/v1/server/ping');
       return response.statusCode == 200;
     } on DioError {
       return false;
@@ -29,8 +29,8 @@ class InternetService {
 
   Future<int> getMinimalVersionApp() async {
     try {
-      final response = await dio.get('$url/Server/minimal_version');
-      return response.data;
+      final response = await dio.get('$url/v1/server/minimal_version');
+      return response.data["MinimalVersionMobileApp"];
     } on DioError {
       return -1;
     }
@@ -38,14 +38,13 @@ class InternetService {
 
   Future<List<QuestionHelper>> getQuestionHelper() async {
     try {
-      final response = await dio.get('$url/Server/questions_help');
+      final response = await dio.get('$url/v1/server/questions_help');
       final List<QuestionHelper> questions = <QuestionHelper>[];
-
-      for (int i = 0; i < response.data.length; i++) {
+      for (int i = 0; i < response.data["questions"].length; i++) {
         questions.add(
           QuestionHelper(
-            (response.data[i] as Map<String, dynamic>)['question'].toString(),
-            (response.data[i] as Map<String, dynamic>)['answer'].toString(),
+            (response.data["questions"][i] as Map<String, dynamic>)['Question'].toString(),
+            (response.data["questions"][i] as Map<String, dynamic>)['Answer'].toString(),
           ),
         );
       }
@@ -59,8 +58,8 @@ class InternetService {
 
   Future<List<String>> getUniverses() async {
     try {
-      final response = await dio.get('$url/Server/universes');
-      return (response.data as List).cast<String>();
+      final response = await dio.get('$url/v1/server/universities');
+      return (response.data["universities"] as List).cast<String>();
     } on DioError {
       return List.empty();
       // throw Exception('Не удалось получить список ВУЗов');
@@ -102,7 +101,7 @@ class InternetService {
   Future<bool> checkAuth() async {
     try {
       final response = await dio.get(
-        '$uri/Login/chek_auth',
+        '$uri/v1/login/chek_auth',
         options: Options(
           contentType: Headers.jsonContentType,
           headers: {
@@ -120,20 +119,30 @@ class InternetService {
   }
 
   Future<void> loginUser() async {
-    final response = await dio.post(
-      '$uri/Login',
-      data: jsonEncode({
-        'loginOrEmail':
-            await SecurityStorage.instance.getSecret(SecretInfo.loginOrEmail),
-        'password':
-            await SecurityStorage.instance.getSecret(SecretInfo.password),
-      }),
-    );
-    if (response.statusCode == 200) {
-      await SecurityStorage.instance
-          .setSecret(SecretInfo.jwt, response.data.toString());
-    } else {
-      throw Exception('Не удалось войти');
+    try {
+      final response = await dio.post(
+        '$uri/v1/server/signin',
+        data: jsonEncode({
+          'Email':
+          await SecurityStorage.instance.getSecret(SecretInfo.loginOrEmail),
+          'Password':
+          await SecurityStorage.instance.getSecret(SecretInfo.password),
+        }),
+        options: Options(
+          contentType: Headers.jsonContentType,
+          headers: {'accept': '*/*'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        await SecurityStorage.instance
+            .setSecret(SecretInfo.jwt, jsonDecode(response.data)['token'].toString());
+      } else {
+        throw Exception('Не удалось войти');
+      }
+    }
+    on DioError catch (e){
+      debugPrint(e.toString());
+      rethrow;
     }
   }
 
@@ -154,7 +163,7 @@ class InternetService {
     final String jsonString = jsonEncode(newUser);
     try {
       await dio.post(
-        '$uri/User',
+        '$uri/v1/server/signup',
         data: jsonString,
         options: Options(
           contentType: Headers.jsonContentType,
@@ -164,7 +173,8 @@ class InternetService {
 
       SecurityStorage.instance.setSecret(SecretInfo.loginOrEmail, username);
       SecurityStorage.instance.setSecret(SecretInfo.password, password);
-    } on DioError {
+    } on DioError catch (e){
+      debugPrint(e.toString());
       rethrow;
     }
   }

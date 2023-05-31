@@ -1,12 +1,12 @@
+import 'package:cardexam/database/card.dart';
+import 'package:cardexam/database/questionanswer.dart';
 import 'package:cardexam/theme/theme_manager.dart';
 import 'package:cardexam/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-enum Data {
-  settingsApp,
-}
+enum Data { settingsApp, card }
 
 enum SettingsApp { darkMode, isFirstStart, versionApp }
 
@@ -44,6 +44,14 @@ class LocaleData {
     final box = await Hive.openBox(data.name);
     await box.put(info.name, textInfo);
     debugPrint('Set: ${data.name} : ${info.name} : $textInfo');
+  }
+
+  Future<void> activateDb() async {
+    final box = await Hive.openBox(Data.card.name);
+    //
+    Hive
+      ..registerAdapter(QuestionAnswerAdapter())
+      ..registerAdapter(CardAdapter());
   }
 
   Future<void> initLocaleDb() async {

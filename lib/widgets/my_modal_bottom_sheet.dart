@@ -47,9 +47,13 @@ class _MyModalBottomSheetState extends State<MyModalBottomSheet> {
             context: context,
             builder: (context) => Padding(
               padding: EdgeInsets.only(
-                top: MediaQueryData.fromWindow(
+                // top: MediaQueryData.fromWindow(
+                //   WidgetsBinding.instance.window,
+                // ).padding.top,
+                bottom: MediaQueryData.fromWindow(
                   WidgetsBinding.instance.window,
-                ).padding.top,
+                ).padding.bottom,
+                // bottom: MediaQuery.of(context).viewPadding.bottom,
               ),
               child: DecoratedBox(
                 decoration: BoxDecoration(
