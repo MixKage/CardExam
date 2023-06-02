@@ -34,8 +34,8 @@ class _SettingsPageState extends State<SettingsPage> {
     super.dispose();
   }
 
-  Column questionWithOutInternet() => Column(
-        children: const [
+  Column questionWithOutInternet() => const Column(
+        children: [
           MyListTile(
             title: 'Почему моего учебного заведения нет в списке?',
             subtitle: 'Если вашего учебного заведения нет в списке, '
@@ -163,43 +163,24 @@ class _SettingsPageState extends State<SettingsPage> {
                 shrinkWrap: true,
                 controller: _scrollController,
                 children: [
-                  FutureBuilder(
-                    future: LocaleData.instance.getInfo(
-                      Data.settingsApp,
-                      SettingsApp.darkMode,
-                    ),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        _darkMode = snapshot.data.toString() == 'true';
-                        return SwitchListTile(
-                          title: const Text('Темная тема'),
-                          value: _darkMode,
-                          onChanged: (value) {
-                            setState(() {
-                              _darkMode = value;
-                              ThemeManager.instance.toggleTheme(value);
-                            });
-                          },
-                        );
-                      } else {
-                        return const Text('Загрузка');
-                      }
+                  Builder(
+                    builder: (context) {
+                      _darkMode = LocaleData.instance.getDarkTheme();
+                      return SwitchListTile(
+                        title: const Text('Темная тема'),
+                        value: _darkMode,
+                        onChanged: (value) async {
+                          await ThemeManager.instance.toggleTheme(value);
+                          setState(() {
+                            _darkMode = value;
+                          });
+                        },
+                      );
                     },
                   ),
-                  FutureBuilder(
-                    future: LocaleData.instance.getInfo(
-                      Data.settingsApp,
-                      SettingsApp.versionApp,
-                    ),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return MyRowTile(
-                          title: 'Версия приложения',
-                          subtitle: '1.${snapshot.data.toString()}',
-                        );
-                      }
-                      return const Text('Загрузка');
-                    },
+                  MyRowTile(
+                    title: 'Версия приложения',
+                    subtitle: '1.${LocaleData.instance.dbVersion}',
                   ),
                   FutureBuilder(
                     future: SecurityStorage.instance.getSecret(SecretInfo.jwt),
@@ -222,13 +203,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     child: BuildLoginBtn(
                       buttonText: 'Очистить кэш',
                       onPressed: () async {
-                        await LocaleData.instance.deleteAll();
-                        await LocaleData.instance.setInfo(
-                          Data.settingsApp,
-                          SettingsApp.isFirstStart,
-                          'false',
-                        );
-                        await LocaleData.instance.initLocaleDb();
+                        await LocaleData.instance.userDeleteAll();
                         await NavigationService.instance
                             .pushNamedAndRemoveUntil(NavigationPaths.start);
                       },
