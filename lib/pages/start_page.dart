@@ -16,12 +16,6 @@ class StartPage extends StatelessWidget {
   }
 
   Future<bool> _startApp() async {
-    LocaleData.instance.activateDb();
-    if (await LocaleData.instance
-            .getInfo(Data.settingsApp, SettingsApp.isFirstStart) ==
-        'true') {
-      await LocaleData.instance.initLocaleDb();
-    }
     try {
       debugPrint('Start: Попытка входа в аккаунт');
       await InternetService.instance.executeRequest(

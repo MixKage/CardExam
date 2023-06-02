@@ -19,7 +19,7 @@ class PostHttpOverrides extends HttpOverrides {
 
 Future<void> main() async {
   await Hive.initFlutter();
-  await LocaleData.instance.initLocaleDb();
+  await LocaleData.instance.initAsync();
   HttpOverrides.global = PostHttpOverrides();
   runApp(const MyApp());
 }

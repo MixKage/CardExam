@@ -13,9 +13,8 @@ class ThemeManager extends ChangeNotifier {
 
   bool isDark() => themeMode == ThemeMode.dark;
 
-  void toggleTheme(isDark) {
-    LocaleData.instance
-        .setInfo(Data.settingsApp, SettingsApp.darkMode, isDark.toString());
+  Future<void> toggleTheme(isDark) async {
+    await LocaleData.instance.putDarkTheme(value: isDark);
     _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
