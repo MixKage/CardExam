@@ -34,8 +34,8 @@ class _SettingsPageState extends State<SettingsPage> {
     super.dispose();
   }
 
-  Column questionWithOutInternet() => const Column(
-        children: [
+  Column questionWithOutInternet() => Column(
+        children: const [
           MyListTile(
             title: 'Почему моего учебного заведения нет в списке?',
             subtitle: 'Если вашего учебного заведения нет в списке, '
